@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post Events</title>
+    <style>
+        .padding_elm{padding-top: 5px;padding-bottom: 5px;}
+        .b{border: solid #48CAE4;}
+    
+    </style>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body style="background-color: rgba(226, 220, 220, 0.418);" >
+    <nav class="navbar navbar-expand-sm" style="background-color: #073B4C;padding:10px">
+        <a class="navbar-brand" style="color:white;padding: 10px;" href="home.html">Attend&Grow</a>
+        <ul class="navbar-nav" style="align-self: right;">
+            <li class="nav-item">
+                <a href="events.html" style="color: white;padding: 10px;">Events</a>
+            </li>
+            <li class="nav-item">
+                <a href="/registered" style="color: white;padding: 10px;">Registered Events</a>
+            </li>
+            <li class="nav-item">
+                <a href="manage_events.html" style="color: white;padding: 10px;">Manage Events</a>
+            </li>
+            <li class="nav-item">
+                <a href="/login" style="color: white;padding: 10px;">Login/SignUp</a>
+            </li>
+          </ul>
+    </nav>
+    
+    <h2 style="color: #0077B6;margin-top:30px;margin-left: 20px;">Post Events</h2>
+    <p style="margin:20px">Post your event here,get publicity for the event and even registration through our portal</p><br>
+    
+    <div style="margin-right: 10%;margin-left: 20%;margin-top: 10px;margin-bottom: 30px;"  class="container">
+        <table >
+           <form>
+            <tr>
+                <td colspan="3" ><input type="text" placeholder="Enter event name" class="form-control" style="width: 100%;height:40px;margin-bottom: 10px;" class="b"></td>
+            </tr>
+            <tr>
+                <td colspan="2" rowspan="4" class="padding_elm">
+                    <textarea rows="15" cols="35" class="form-control" placeholder="Enter description"></textarea>
+                </td>
+                <td style="padding-left: 90px;" class="padding_elm">
+                    Enter time: <input type="time" class="form-control">
+                </td>
+            </tr>
+            <tr>
+                <td style="padding-left: 87px;" class="padding_elm">
+                    Select date: <input type="date" class="form-control" >
+                </td>
+            
+            </tr>
+            <tr>
+                <td style="padding-left: 90px;" class="padding_elm">
+                    Upload pic: <input type="file" class="form-control" >
+                </td>
+                
+            </tr>
+            <tr>
+                <td style="padding-left: 90px;" class="padding_elm">
+                    <input type="text" placeholder="Enter venue" style="width: 100%;height: 40px;"class="form-control">
+                </td>
+            </tr>
+            <tr>    
+                <td colspan="1" class="padding_elm">
+                    <textarea  rows="5" style="width: 80%;" class="form-control" placeholder="Selected tags"></textarea>
+                </td>
+                <td colspan="2" style="padding-left: 10px;" class="padding_elm">
+                    <textarea  rows="5" cols="50" style="width: 100%;" class="form-control" placeholder="Select Tags"></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3"  class="padding_elm" style="padding-left: 190px;">
+                    <input type="checkbox"  > Want to use our registration portal?
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3"  class="padding_elm">
+                    <input type="text" placeholder="Link to registration portal" style="width: 100%;height: 40px;" class="form-control"> 
+                </td>
+            </tr>
+            <tr style="padding-right: 30px;">
+                <td colspan="3" class="padding_elm" style="padding-left: 250px;">
+                    <input type="button" value="POST" style="padding-left: 30px;padding-right: 30px;padding-top: 20px;padding-bottom: 20px;color: white;background-color: rgba(6, 214, 160, 0.65);box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); border-color: whitesmoke;margin: 30px;">
+                </td>
+            </tr>
+           </form>
+        </table>
+    </div>
+    <br>
+    <footer>
+    <div class="row" style="text-align: center;background-color: #48CAE4;padding:10px;">
+        <div class="col-sm-4"><b>About</b><p>We found finding it difficult to read through mails, follow numerous clubs on social media.So here we come up with a website where we can see all events of VIT listed at one place with the ability to filter based on tech stack,date,time,club etc.Product designed by VITians for VITians.</p></div>
+        <div class="col-sm-4"><b>Discover</b><ul class="navbar-nav" style="align-self: right;">
+            <li class="nav-item">
+                <a href="events.html" style="color: white;padding: 10px;">Events</a>
+            </li>
+            <li class="nav-item">
+                <a href="/registered" style="color: white;padding: 10px;">Registered Events</a>
+            </li>
+            <li class="nav-item">
+                <a href="manage_events.html" style="color: white;padding: 10px;">Manage Events</a>
+            </li>
+            <li class="nav-item">
+                <a href="/login" style="color: white;padding: 10px;">Login/SignUp</a>
+            </li>
+          </ul></div>
+        <div class="col-sm-4"><b>Contact Us</b><p>Email:attendandgrow@vit.ac.in</p><p>Ph no:123456789</p></div>
+    </div>
+    <div class="container-fluid" style="text-align: center;background-color: #023E8A;padding:10px;">
+        <span style="color:white">Developed by VITians for VITians</span>
+    </div>
+    </footer>
+</body>
+</html>

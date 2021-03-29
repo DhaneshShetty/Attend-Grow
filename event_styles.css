@@ -9,6 +9,34 @@ body{
   text-align: center;
 }
 
+.fixed-position{
+  position: fixed;
+  width: 30%;
+}
+
+@media (max-width: 1000px){
+  .fixed-position{
+    position: static;
+    width: 75%;
+    margin: 0 auto;
+  }
+
+  p{
+    text-align: center;
+  }
+
+
+.event-description{
+    text-align: center;
+  }
+
+  .event-title{
+    text-align: center;
+  }
+}
+
+
+
 
 .register-button{
   width: 50%;
@@ -43,7 +71,7 @@ body{
 .event-card{
   margin: 0 auto;
   background-color: white;
-  width: 350px;
+  width: 65%;
   margin-bottom: 1.5rem;
   text-align: left;
   padding: 5%;

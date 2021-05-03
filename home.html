@@ -6,6 +6,21 @@
         <link rel="stylesheet" href="common.css">
         <script src=https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js></script>
         <script>$(document).ready(function(){
+            var p=0;
+            var array=["A","t","t","e","n","d","","&","","G","r","o","w"];
+            function animation(k)
+            {
+               
+                $("#title_anim").append("<span style='color:#023E8A;font-size: 50px;'>"+array[k]+"</span>")
+            
+            }
+            setInterval(function(){
+                if(p<array.length)
+                {
+                    animation(p);
+                    p++;
+                }
+            },130);
             var obj =[{title:"Event 1",club:"Club 1",desc:"Lorem ipsum dolor sit amet, consectetur adipiscing elit Consectetur nisi, tempor pharetra id viverra. Urna sit porttitor arcu consectetur tincidunt feugiat a risus eleifend.",link:""},{title:"Event 2",club:"Club 2",desc:"Lorem ipsum dolor sit amet, consectetur adipiscing elit.Consectetur nisi, tempor pharetra id viverra. Urna sit porttitor arcu consectetur tincidunt feugiat a risus eleifend.",link:""},{title:"Event 3",club:"Club 3",desc:"Lorem ipsum dolor sit amet, consectetur adipiscing elit.Consectetur nisi, tempor pharetra id viverra. Urna sit porttitor arcu consectetur tincidunt feugiat a risus eleifend.",link:""}]
             
             for(var i=0;i<obj.length;i++){
@@ -18,7 +33,7 @@
             }
             $("#events").append("<div class=col-sm-2 align=center height=100px><a href=events.html><button class=eventButton align=center>See all events</button></a></div></div>");
         })
-            </script>
+        </script>
     </head>
     <body>        
             <nav class="navbar navbar-expand-sm" style="background-color: #073B4C;padding:10px">
@@ -41,8 +56,8 @@
         
         <div style="background-image: url(home.png);position: relative;height:400px">
             <div style="position: absolute;right:30px;bottom:50px">
-            <span style="color:#023E8A;font-size: 36px;">Attend&Grow</span><br>
-            <span style="color:#000000;font-size: 24px;">All events of VIT,under one place</span>
+            <span  id="title_anim"></span><br>
+            <span style="color:#000000;font-size: 24px;">All events of VIT under one place</span>
         </div>
         </div>
         <div class="row" id="events" style="padding: 20px;"></div>

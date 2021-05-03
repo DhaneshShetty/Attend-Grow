@@ -10,7 +10,12 @@
     border-radius:10px;
     margin:10px;
     padding:10px;
-    background-color: aliceblue;
+    background-color: aliceblue; 
+    margin: 30px;
+}
+#eventitem:hover{
+    box-shadow: 0 0 23px rgb(88, 66, 141);
+    border-radius: 9px;
 }
 .eventButton{
     background-color: #023E8A;

@@ -1,17 +1,11 @@
-const postEvent = (req,res)=>{
+const postEvent = (req,res)=>{}
 
-}
+const getAllEvents = (req,res)=>{}
 
-const getAllEvents = (req,res)=>{
+const getEvent = (req,res)=>{}
 
-}
+const getParticipants = (req,res)=>{}
 
-const getEvent = (req,res)=>{
+const register = (req,res)=>{}
 
-}
-
-const getParticipants = (req,res)=>{
-
-}
-
-module.exports={postEvent,getAllEvents,getEvent,getParticipants};
+module.exports={postEvent,getAllEvents,getEvent,getParticipants,register};

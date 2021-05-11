@@ -23,7 +23,7 @@ const eventSchema = new Schema({
     image:{
       type:String,
       required: true
-    }
+    },
     venue:{
       type: String,
       required: true
@@ -31,7 +31,7 @@ const eventSchema = new Schema({
     tags:{
       type: [String],
       required: true
-    }
+    },
     isUsingRegPortal:{
       type: Boolean,
       required: true

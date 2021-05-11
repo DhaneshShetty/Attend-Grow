@@ -1,8 +1,8 @@
 const User = require('../models/user.model');
-const Tokens = require('../model/refreshtoken.model');
+const Token = require('../models/refreshtoken.model');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
-const Token = require('../models/refreshtoken.model');
+
 
 const createUser = async(req,res)=>{
     try{
@@ -26,7 +26,7 @@ const createUser = async(req,res)=>{
 const loginUser = async(req,res) =>{
     const email = req.body.email;
     const password = req.body.password;
-    const user =  User.find({email:email}).then(async user=>{
+    User.find({email:email}).then(async user=>{
         if(user == null){
             return res.status(404).json({Success:false,Message:'Cannot find User'});
         }
@@ -34,9 +34,18 @@ const loginUser = async(req,res) =>{
             if(await bcrypt.compare(password,user[0].password)){
                 const accessToken=jwt.sign({email:user[0].email},process.env.ACCESS_TOKEN_SECRET,{expiresIn:'60m'});
                 const refreshToken = jwt.sign({email:user[0].email},process.env.REFRESH_TOKEN_SECRET);
-                const token = new Tokens({refreshToken});
+                const token = new Token({refreshtoken:refreshToken});
                 token.save()
-                .then(()=>res.status(200).json({Success:true,Message:'Logged In Successfully',AccessToken:accessToken,RefreshToken:refreshToken}));                
+                .then(()=>{
+                    res.cookie("requestToken",refreshToken,{
+                        httpOnly: true,
+                        sameSite: "strict" });
+                    res.cookie("accessToken",accessToken,{
+                        httpOnly: true,
+                        sameSite: "strict" });
+                    res.sendStatus(200).redirect('../');
+                })
+                .catch(err=>console.log(err));                
             }
             else{
                 return res.status(403).json({Success:false,Message:'Wrong Password'});
@@ -52,21 +61,34 @@ const loginUser = async(req,res) =>{
     });    
 }
 
-function authenticator(req,res,next){
-    const authHeader = req.headers['authorization'];
-    const token = authHeader && authHeader.split(' ')[1];
+function authenticator(req,res,next){    
+    const token = req.cookies.accessToken;
+    const refresh = req.cookies.refreshToken;
     if(token == null){
-        return res.status(401).json({Success:false,Message:'Token not passed'});
+        return res.status(401).redirect('../login.html');
     }
     jwt.verify(token,process.env.ACCESS_TOKEN_SECRET,(err,user)=>{
-        if(err) return res.status(403).json({Success:false,Message:Forbidden});
-        req.user = user
-        next()
+        if(err) {
+            Token.find({refreshtoken:refresh}).then(token=>{
+                if(token==null) return res.status(403).redirect('../login.html');
+                jwt.verify(refreshToken,process.env.REFRESH_TOKEN_SECRET,(err,user)=>{
+                    if(err) return res.status(403).redirect('../login.html');
+                    const accessToken = jwt.sign({email:user.email},process.env.ACCESS_TOKEN_SECRET,{expiresIn:'60m'});
+                    res.cookie('accessToken',accessToken,{
+                        httpOnly: true,
+                        sameSite: "strict" });
+                });
+            }).catch(err=>{
+                console.log(err);
+            })
+        }
+        req.user = user;
+        next();
     })
 }
 
 const getProfile = (req,res) =>{
-    const user =  User.find({email:req.user.email}).then(user=>{
+    User.find({email:req.user.email}).then(user=>{
         if(user == null){
             return res.status(404).json({Success:false,Message:'Cannot find User'});
         }
@@ -89,6 +111,24 @@ const eventsList = (req,res) =>{
     })
 }
 
-module.exports = {createUser,loginUser,getProfile,eventsList,authenticator};
+const getNewToken = (req,res) =>{
+    const refreshToken = req.body.token;
+    if(refreshToken == null) return res.sendStatus(400);
+    
+}
+
+const logOut = (req,res) =>{
+    const refreshToken = req.cookies.refreshToken;
+    Token.deleteOne({refreshtoken:refreshToken}).then(()=>{
+        res.clearCookie('accessToken');
+        res.clearCookie('refreshToken');
+        res.status(204).json({Success:true,data:'LogOut Successful'})
+    }).catch(err=>{
+        console.log(err);
+        res.sendStatus(404);
+    })
+}
+
+module.exports = {createUser,loginUser,getProfile,eventsList,authenticator,getNewToken,logOut};
 
 

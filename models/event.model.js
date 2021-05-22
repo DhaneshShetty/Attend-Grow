@@ -20,17 +20,16 @@ const eventSchema = new Schema({
       type: String,
       required: true
     },
-    image:{
-      type:String,
-      required: true
+    img:{
+      data: Buffer,
+      contentType: String
     },
     venue:{
       type: String,
       required: true
     },
     tags:{
-      type: [String],
-      required: true
+      type:String
     },
     isUsingRegPortal:{
       type: Boolean,
@@ -43,3 +42,4 @@ const eventSchema = new Schema({
 
 const Event = mongoose.model('Event',eventSchema);
 module.exports = Event;
+

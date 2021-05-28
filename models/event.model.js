@@ -32,8 +32,7 @@ const eventSchema = new Schema({
       type:String
     },
     isUsingRegPortal:{
-      type: Boolean,
-      required: true
+      type: Boolean
     },
     regLink:{
       type: String
@@ -42,4 +41,3 @@ const eventSchema = new Schema({
 
 const Event = mongoose.model('Event',eventSchema);
 module.exports = Event;
-

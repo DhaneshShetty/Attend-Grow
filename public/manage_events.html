@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Attend&Grow-Manage events</title>    
+    <title>Attend&Grow-Manage events</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="common.css">
     <script src=https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js></script>
@@ -12,7 +12,7 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-sm" style="background-color: #073B4C;padding:10px">
-        <a class="navbar-brand" style="color:white;padding: 10px;" href="home.html">Attend&Grow</a>
+        <a class="navbar-brand" style="color:white;padding: 10px;" href="index.html">Attend&Grow</a>
         <ul class="navbar-nav" style="align-self: right;">
             <li class="nav-item">
                 <a href="events.html" style="color: white;padding: 10px;">Events</a>
@@ -40,9 +40,11 @@
     </div>
     <div>
         <h3 style="color: #00B4D8;margin-left: 20px;">Your events:</h3><br>
-        <h4 style="margin-left: 30px;"><u>Upcoming</u></h4><br>
+        <h4 style="margin-left: 30px;"><input type="button" class="btn btn-primary" value="On Going"></h4><br>
+        <div id="OnGoing"></div>
+        <h4 style="margin-left: 30px;"><input type="button" class="btn btn-primary" value="Upcoming"></h4><br>
         <div id="upcoming"></div><br>
-        <h4 style="margin-left: 30px;"><u>Completed</u></h4><br>
+        <h4 style="margin-left: 30px;"><input type="button" class="btn btn-primary" value="Completed"></h4><br>
         <div id="completed"></div>
     </div>
     <br>
@@ -67,6 +69,6 @@
     <div class="container-fluid" style="text-align: center;background-color: #023E8A;padding:10px;">
         <span style="color:white">Developed by VITians for VITians</span>
     </div>
-    
+
 </body>
 </html>

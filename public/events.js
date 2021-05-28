@@ -2,17 +2,19 @@ function hexToBase64(str) {
     return btoa(String.fromCharCode.apply(null, str.replace(/\r|\n/g, "").replace(/([\da-fA-F]{2}) ?/g, "0x$1 ").replace(/ +$/, "").split(" ")));
 }
 $(document).ready(function(){
-    $.ajax('./events/events',
+
+    $.ajax('../events/events',
     {
         type:'GET',
         dataType:'json',
-        success:function(data1,status,xhr)
+        success: function(data1,status,xhr)
         {
+          console.log("Success ajax");
             for(var i=0;i<data1.length;i++){
-                console.log(data1[i]._id)
-                var div="<div id=eventitem class=row>"
-                var image="<img src='home.png' width=200dp height=200dp>"
-                var tags="<div id=desc class=col-sm-8><br>"
+                var div="<div id='eventitem' class='row'>";
+                var img_data = bytesToBase64(data1[i].img.data.data);
+								var image="<img class='eventItemImg' src='data:" + data1[i].img.contentType + ";base64," + img_data + "' alt='Event Poster'>";
+                var tags="<div id='desc' class='col-sm-8'><br>";
                 var arr_strings=data1[i].tags
                 var arr=arr_strings.split(',')
                 for(var j=0;j<arr.length;j++)
@@ -20,14 +22,20 @@ $(document).ready(function(){
                     tags=tags+"<span class=eventtag>"+arr[j]+"</span>"
                 }
                 var title="<br><p style=padding-top:10px>"+data1[i].name+"</p>"
-                var club="<p>"+data1[i].name+"</p>"
-                var desc="<p>"+data1[i].description+"</p></div>"
-                var button="<div class=col-sm-2 ><a><button style=background-color:#023E8A;color:#FFFFFF class='but' value='"+data1[i]._id+"'>View More</button></a></div></div>"
-                $("#eventslist").append(div+image+tags+title+club+desc+button);
+                //var club="<p>"+data1[i].name+"</p>"
+                var club = "";
+                var desc="<p>"+data1[i].description+"</p></div>";
+								var button="<form action='event.html' method='get'>"
+													+	"<input type='hidden' name='event_id' value='" + data1[i]._id + "'>"
+													+ "<input type='submit' value='View More'> </form>"
+
+								$("#eventslist").append(div+image+tags+title+club+desc+button);
             }
         },
 
     });
-    
+
+
+
 });
 

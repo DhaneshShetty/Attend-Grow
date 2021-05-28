@@ -15,7 +15,7 @@ const createUser = async(req,res)=>{
         const newUser = new User({email:email,name:name,password:hashedPassword,regNo:regNo,regEvents:[]});
         newUser.save()
         .then(()=>res.status(201).json({Success:true}))
-        .catch(err=> res.status(400).json({Success:false,Message:err}));  
+        .catch(err=> res.status(400).json({Success:false,Message:err}));
     }
     catch(error){
         console.log(error);
@@ -26,6 +26,7 @@ const createUser = async(req,res)=>{
 const loginUser = async(req,res) =>{
     const email = req.body.email;
     const password = req.body.password;
+    console.log("request is " + req.body);
     User.find({email:email}).then(async user=>{
         if(user == null){
             return res.status(404).json({Success:false,Message:'Cannot find User'});
@@ -43,9 +44,9 @@ const loginUser = async(req,res) =>{
                     res.cookie("accessToken",accessToken,{
                         httpOnly: true,
                         sameSite: "strict" });
-                    res.sendStatus(200).redirect('../');
+                    res.redirect('../');
                 })
-                .catch(err=>console.log(err));                
+                .catch(err=>console.log(err));
             }
             else{
                 return res.status(403).json({Success:false,Message:'Wrong Password'});
@@ -58,10 +59,10 @@ const loginUser = async(req,res) =>{
     }).catch(err=>{
         console.log(error);
         res.status(400).json({Success:false,Message:error});
-    });    
+    });
 }
 
-function authenticator(req,res,next){    
+function authenticator(req,res,next){
     const token = req.cookies.accessToken;
     const refresh = req.cookies.refreshToken;
     if(token == null){
@@ -99,22 +100,34 @@ const getProfile = (req,res) =>{
     })
 }
 
-const eventsList = (req,res) =>{
-    User.find({email:req.user.email}).then(user=>{
+
+const eventsList =(req,res) =>{
+    User.find({email:req.user.email}).then(async user=>{
         if(user == null){
             return res.status(404).json({Success:false,Message:'Cannot find User'});
         }
-        return res.status(200).json({Success:true,data:user.regEvents});
+        var arr=user[0].regEvents
+        var data_arr=[]
+        for(var i=0;i<arr.length;i++)
+        {
+            await EVENT_OBJ.find({_id:arr[i]}).then((data1)=>{
+                data_arr.push(data1[0])
+            }).catch(err=>{
+                console.log(err);
+                res.status(400).json({Success:false,Message:err});
+            })
+            
+        }
+        return res.status(200).json({Success:true,result:data_arr})
     }).catch(err=>{
-        console.log(error);
-        res.status(400).json({Success:false,Message:error});
+        console.log(err);
+        res.status(400).json({Success:false,Message:err});
     })
 }
-
 const getNewToken = (req,res) =>{
     const refreshToken = req.body.token;
     if(refreshToken == null) return res.sendStatus(400);
-    
+
 }
 
 const logOut = (req,res) =>{
@@ -130,5 +143,3 @@ const logOut = (req,res) =>{
 }
 
 module.exports = {createUser,loginUser,getProfile,eventsList,authenticator,getNewToken,logOut};
-
-

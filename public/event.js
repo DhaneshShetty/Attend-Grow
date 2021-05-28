@@ -29,4 +29,20 @@ $(document).ready(function(){
 
         },
     });
+    $("#register").click(function(){
+        console.log('Clicked')
+        $j.ajax('/events/register',{
+            type:'POST',
+            data:{id:data.event_id},
+            dataType:'json',
+            success:function(data1,status,xhr){
+                alert('U have been registered');
+            },
+            error:function(xhr,status,error){
+                console.log("Error:"+error);
+                console.log("Status:"+status);
+            }
+        });
+    });
+
 });

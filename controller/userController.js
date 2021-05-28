@@ -66,7 +66,7 @@ function authenticator(req,res,next){
     const token = req.cookies.accessToken;
     const refresh = req.cookies.refreshToken;
     if(token == null){
-        return res.status(401).redirect('../login.html');
+        return res.redirect('../login.html');
     }
     jwt.verify(token,process.env.ACCESS_TOKEN_SECRET,(err,user)=>{
         if(err) {

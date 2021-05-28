@@ -100,18 +100,30 @@ const getProfile = (req,res) =>{
     })
 }
 
-const eventsList = (req,res) =>{
-    User.find({email:req.user.email}).then(user=>{
+
+const eventsList =(req,res) =>{
+    User.find({email:req.user.email}).then(async user=>{
         if(user == null){
             return res.status(404).json({Success:false,Message:'Cannot find User'});
         }
-        return res.status(200).json({Success:true,data:user.regEvents});
+        var arr=user[0].regEvents
+        var data_arr=[]
+        for(var i=0;i<arr.length;i++)
+        {
+            await EVENT_OBJ.find({_id:arr[i]}).then((data1)=>{
+                data_arr.push(data1[0])
+            }).catch(err=>{
+                console.log(err);
+                res.status(400).json({Success:false,Message:err});
+            })
+            
+        }
+        return res.status(200).json({Success:true,result:data_arr})
     }).catch(err=>{
-        console.log(error);
-        res.status(400).json({Success:false,Message:error});
+        console.log(err);
+        res.status(400).json({Success:false,Message:err});
     })
 }
-
 const getNewToken = (req,res) =>{
     const refreshToken = req.body.token;
     if(refreshToken == null) return res.sendStatus(400);

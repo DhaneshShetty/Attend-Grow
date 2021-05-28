@@ -1,31 +1,58 @@
 $(document).ready(function(){
-    var upcomingEvents=[{title:"Event 1",club:"Club 1",desc:"Lorem ipsum dolor sit amet, consectetur adipiscing elit Consectetur nisi, tempor pharetra id viverra. Urna sit porttitor arcu consectetur tincidunt feugiat a risus eleifend.",link:"",image:"",tags:["app","web"]},{title:"Event 2",club:"Club 2",desc:"Lorem ipsum dolor sit amet, consectetur adipiscing elit.Consectetur nisi, tempor pharetra id viverra. Urna sit porttitor arcu consectetur tincidunt feugiat a risus eleifend.",link:"",image:"",tags:["app","web"]},{title:"Event 3",club:"Club 3",desc:"Lorem ipsum dolor sit amet, consectetur adipiscing elit.Consectetur nisi, tempor pharetra id viverra. Urna sit porttitor arcu consectetur tincidunt feugiat a risus eleifend.",link:"",image:"",tags:["app","web"]}]
-    for(var i=0;i<upcomingEvents.length;i++){
-        var div="<div id=eventitem class=row>"
-        var image="<img src=home.png class=col-sm-2>"
-        var tags="<div id=desc class=col-sm-8><br>"
-        for(var j=0;j<upcomingEvents[i].tags.length;j++){
-            tags=tags+"<span class=eventtag>"+upcomingEvents[i].tags[j]+"</span>"
-        }
-        var title="<br><p style=padding-top:10px>"+upcomingEvents[i].title+"</p>"
-        var club="<p>"+upcomingEvents[i].club+"</p>"
-        var desc="<p>"+upcomingEvents[i].desc+"</p></div>"
-        var button="<div class=col-sm-2 ><a><button style=background-color:#023E8A;color:#FFFFFF>View More</button></a><br><br><a href=participants.html><button style=background-color:#023E8A;color:#FFFFFF>Participants</button></a></div></div>"
-        $("#upcoming").append(div+image+tags+title+club+desc+button)
-    }
-    var completedEvents=[{title:"Event 1",club:"Club 1",desc:"Lorem ipsum dolor sit amet, consectetur adipiscing elit Consectetur nisi, tempor pharetra id viverra. Urna sit porttitor arcu consectetur tincidunt feugiat a risus eleifend.",link:"",image:"",tags:["app","web"]},{title:"Event 2",club:"Club 2",desc:"Lorem ipsum dolor sit amet, consectetur adipiscing elit.Consectetur nisi, tempor pharetra id viverra. Urna sit porttitor arcu consectetur tincidunt feugiat a risus eleifend.",link:"",image:"",tags:["app","web"]},{title:"Event 3",club:"Club 3",desc:"Lorem ipsum dolor sit amet, consectetur adipiscing elit.Consectetur nisi, tempor pharetra id viverra. Urna sit porttitor arcu consectetur tincidunt feugiat a risus eleifend.",link:"",image:"",tags:["app","web"]}]
-    for(var i=0;i<completedEvents.length;i++){
-        var div="<div id=eventitem class=row>"
-        var image="<img src=home.png class=col-sm-2>"
-        var tags="<div id=desc class=col-sm-8><br>"
-        for(var j=0;j<completedEvents[i].tags.length;j++){
-            tags=tags+"<span class=eventtag>"+completedEvents[i].tags[j]+"</span>"
-        }
-        var title="<br><p style=padding-top:10px>"+completedEvents[i].title+"</p>"
-        var club="<p>"+completedEvents[i].club+"</p>"
-        var desc="<p>"+completedEvents[i].desc+"</p></div>"
-        var button="<div class=col-sm-2 ><a><button style=background-color:#023E8A;color:#FFFFFF>View More</button></a><br><br><a href=participants.html><button style=background-color:#023E8A;color:#FFFFFF>Participants</button></a></div></div>"
-        $("#completed").append(div+image+tags+title+club+desc+button)
-    }
+    $.ajax("/users/registeredEvents",
+    {
+        type:'GET',
+        success:function(data1,status,xhr)
+        {
+            var arr=data1.result
+            console.log(arr)
+            var todayDate=new Date()
+            var todayYear=todayDate.getFullYear()
+            var todayMonth=todayDate.getMonth()
+            var todayDat=todayDate.getDate()
+            var mon;
+            if(todayMonth>0 && todayMonth<10)
+            {
+                mon="0"+(todayMonth+1)
+            }
+            var dateformat=""+todayYear+"-"+mon+"-"+todayDat;
+            var cmpDate=new Date(dateformat)
+            var cmpTime=cmpDate.getTime()
+            var differ;
+            for(var i=0;i<arr.length;i++)
+            {
+                var eventDate=new Date(arr[i].date)
+                var eventTime=eventDate.getTime()
+                console.log(eventTime)
+                console.log(cmpTime)
+                if(eventTime>cmpTime)
+                {
+                    differ="#upcoming"
+                }
+                else if(eventTime==cmpTime)
+                {
+                    differ="#OnGoing"
+                }
+                else{
+                    differ="#completed"
+                }
+                var tags=arr[i].tags
+                var arr_tags=tags.split(",")
 
-})
+                var div="<div id=eventitem class=row>"
+                var image=""
+                var tags="<div id=desc class=col-sm-8><br>"
+                for(var j=0;j<arr_tags.length;j++)
+                {
+                    tags=tags+"<span class=eventtag>"+arr_tags[j]+"</span>"
+                }
+                var title="<br><p style=padding-top:10px>"+arr[i].name+"</p>"
+                var club="<p>"+arr[i].name+"</p>"
+                var desc="<p>"+arr[i].description+"</p></div>"
+                var button="<div class=col-sm-2 ><a><button style=background-color:#023E8A;color:#FFFFFF >View More</button></a></div></div>"
+                $(differ).append(div+image+tags+title+club+desc+button);
+            }
+            
+        }
+    });
+});

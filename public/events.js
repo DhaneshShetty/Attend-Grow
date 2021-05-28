@@ -1,5 +1,8 @@
+function hexToBase64(str) {
+    return btoa(String.fromCharCode.apply(null, str.replace(/\r|\n/g, "").replace(/([\da-fA-F]{2}) ?/g, "0x$1 ").replace(/ +$/, "").split(" ")));
+}
 $(document).ready(function(){
-    $.ajax('/events',
+    $.ajax('./events/events',
     {
         type:'GET',
         dataType:'json',
@@ -8,7 +11,7 @@ $(document).ready(function(){
             for(var i=0;i<data1.length;i++){
                 console.log(data1[i]._id)
                 var div="<div id=eventitem class=row>"
-                var image=""
+                var image="<img src='home.png' width=200dp height=200dp>"
                 var tags="<div id=desc class=col-sm-8><br>"
                 var arr_strings=data1[i].tags
                 var arr=arr_strings.split(',')
@@ -27,3 +30,4 @@ $(document).ready(function(){
     });
     
 });
+

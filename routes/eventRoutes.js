@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 const {postEvent,getAllEvents,getEvent,getParticipants,register,upload} =require('../controller/eventController');
+const {authenticator} = require('../controller/userController');
 
 //routes post event
 router.post('/post_event',upload.single('image'), postEvent);
@@ -10,8 +11,8 @@ router.get('/events',getAllEvents);
 //get particular event
 router.get('/:id',getEvent);
 //get list of participants(public)
-router.get('/:id/participants',getParticipants);
+router.post('/participants',getParticipants);
 //register a user to event
-router.post('/:id/register',register);
+router.post('/register',authenticator,register);
 
 module.exports=router;

@@ -10,7 +10,7 @@
     border-radius:10px;
     margin:10px;
     padding:10px;
-    background-color: aliceblue; 
+    background-color: aliceblue;
     margin: 30px;
 }
 #eventitem:hover{
@@ -27,4 +27,9 @@
     border-radius:5px;
     margin:5px;
     padding: 5px;
+}
+
+.eventItemImg{
+  width: 30%;
+  height: 30%;
 }

@@ -42,14 +42,18 @@
   </head>
 
   <body class="text-center">
-    <form class="form-signin" action="../users/login" method="POST">
+    <form class="form-signin" action="../users/signup" method="post">
       <span  id="title_anim"></span><br><br>
-      <h1 class="h3 mb-3 font-weight-normal"  style='color:#023E8A;'>Please Login</h1>
+      <h1 class="h3 mb-3 font-weight-normal"  style='color:#023E8A;'>Please Sign Up</h1>
+      <label for="name" class="sr-only">Name</label>
+      <input type="text" name="name" id="name" class="form-control" placeholder="Name" required autofocus>
+      <label for="regNo" class="sr-only">Name</label>
+      <input type="text" name="regNo" id="regNo" class="form-control" placeholder="Registration Number" required autofocus>
       <label for="email" class="sr-only">Email address</label>
       <input type="email" name="email" id="email" class="form-control" placeholder="Email address" required autofocus>
       <label for="password" class="sr-only">Password</label>
       <input type="password" name="password" id="password" class="form-control" placeholder="Password" required>
-      <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+      <button class="btn btn-lg btn-primary btn-block" type="submit">Sign Up</button>
       <p class="mt-5 mb-3 text-muted">&copy; Attend&Grow</p>
     </form>
   </body>

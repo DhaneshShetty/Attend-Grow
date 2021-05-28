@@ -15,7 +15,7 @@ const createUser = async(req,res)=>{
         const newUser = new User({email:email,name:name,password:hashedPassword,regNo:regNo,regEvents:[]});
         newUser.save()
         .then(()=>res.status(201).json({Success:true}))
-        .catch(err=> res.status(400).json({Success:false,Message:err}));  
+        .catch(err=> res.status(400).json({Success:false,Message:err}));
     }
     catch(error){
         console.log(error);
@@ -26,6 +26,7 @@ const createUser = async(req,res)=>{
 const loginUser = async(req,res) =>{
     const email = req.body.email;
     const password = req.body.password;
+    console.log("request is " + req.body);
     User.find({email:email}).then(async user=>{
         if(user == null){
             return res.status(404).json({Success:false,Message:'Cannot find User'});
@@ -43,9 +44,9 @@ const loginUser = async(req,res) =>{
                     res.cookie("accessToken",accessToken,{
                         httpOnly: true,
                         sameSite: "strict" });
-                    res.sendStatus(200).redirect('../');
+                    res.redirect('../');
                 })
-                .catch(err=>console.log(err));                
+                .catch(err=>console.log(err));
             }
             else{
                 return res.status(403).json({Success:false,Message:'Wrong Password'});
@@ -58,10 +59,10 @@ const loginUser = async(req,res) =>{
     }).catch(err=>{
         console.log(error);
         res.status(400).json({Success:false,Message:error});
-    });    
+    });
 }
 
-function authenticator(req,res,next){    
+function authenticator(req,res,next){
     const token = req.cookies.accessToken;
     const refresh = req.cookies.refreshToken;
     if(token == null){
@@ -114,7 +115,7 @@ const eventsList = (req,res) =>{
 const getNewToken = (req,res) =>{
     const refreshToken = req.body.token;
     if(refreshToken == null) return res.sendStatus(400);
-    
+
 }
 
 const logOut = (req,res) =>{
@@ -130,5 +131,3 @@ const logOut = (req,res) =>{
 }
 
 module.exports = {createUser,loginUser,getProfile,eventsList,authenticator,getNewToken,logOut};
-
-

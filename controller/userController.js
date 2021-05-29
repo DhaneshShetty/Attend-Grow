@@ -38,12 +38,16 @@ const loginUser = async(req,res) =>{
                 const token = new Token({refreshtoken:refreshToken});
                 token.save()
                 .then(()=>{
-                    res.cookie("requestToken",refreshToken,{
+                    res.cookie("refreshToken",refreshToken,{
                         httpOnly: true,
                         sameSite: "strict" });
                     res.cookie("accessToken",accessToken,{
                         httpOnly: true,
                         sameSite: "strict" });
+                    res.cookie("loggedIn",'true',{
+                        httpOnly:false,
+                        sameSite:"strict"
+                    });
                     res.redirect('../');
                 })
                 .catch(err=>console.log(err));
@@ -66,7 +70,10 @@ function authenticator(req,res,next){
     const token = req.cookies.accessToken;
     const refresh = req.cookies.refreshToken;
     if(token == null){
-        return res.status(401).redirect('../login.html');
+        if(req.xhr){
+            return res.status(403).send({success:true});
+        }
+        return res.redirect('../login.html');
     }
     jwt.verify(token,process.env.ACCESS_TOKEN_SECRET,(err,user)=>{
         if(err) {
@@ -135,6 +142,7 @@ const logOut = (req,res) =>{
     Token.deleteOne({refreshtoken:refreshToken}).then(()=>{
         res.clearCookie('accessToken');
         res.clearCookie('refreshToken');
+        res.clearCookie('loggedIn');
         res.status(204).json({Success:true,data:'LogOut Successful'})
     }).catch(err=>{
         console.log(err);

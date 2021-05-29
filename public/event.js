@@ -29,4 +29,53 @@ $(document).ready(function(){
 
         },
     });
+    function getCookie(cookieName) {
+        var name = cookieName + "=";
+        var ca = document.cookie.split(';');
+        for (var i = 0; i < ca.length; i++) {
+            var c = ca[i].trim();
+            if ((c.indexOf(name)) == 0) {
+                return true;
+            }    
+        }
+        return false;
+    }
+    if(getCookie('loggedIn')){
+        $j.ajax('/events/checkParticipant',
+        {
+            type:'POST',
+            dataType:'json',
+            data:{id:data.event_id},
+            success: function(data1,status,xhr)
+            {
+              if(data1.length!=0){
+                $("#register").attr("disabled","disabled");
+                $("#register").text("Registered");
+              }
+            }
+        });
+    }
+   
+    $("#register").click(function(){
+        console.log('Clicked')
+        $j.ajax('/events/register',{
+            type:'POST',
+            data:{id:data.event_id},
+            dataType:'json',
+            success:function(data1,status,xhr){
+                alert('U have been registered');
+                $("#register").attr("disabled","disabled");
+                $("#register").text("Registered");
+            },
+            error:function(xhr,status,error){
+                if(xhr.status==403){
+                    window.location.href='/login.html';
+                }
+                console.log("Error:"+error);
+                console.log("Status:"+status);
+            }
+        });
+    });
+
 });
+

@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 function displayItem(data1){
   var div="<div id='eventitem' class='row'>";
   var img_data = bytesToBase64(data1.img.data.data);
@@ -36,6 +35,7 @@ function searchName(){
               var regexWord = new RegExp(nameWords[j].toLowerCase());
               if(regexWord.test(data1[i].name.toLowerCase()) || regexWord.test(data1[i].tags.toLowerCase())){
                 displayItem(data1[i]);
+                break;
               }
             }
 
@@ -105,10 +105,12 @@ $(document).ready(function(){
             searchName();
         }
     });
-=======
+  });
+
 function hexToBase64(str) {
     return btoa(String.fromCharCode.apply(null, str.replace(/\r|\n/g, "").replace(/([\da-fA-F]{2}) ?/g, "0x$1 ").replace(/ +$/, "").split(" ")));
 }
+
 $(document).ready(function(){
 
     $.ajax('../events/events',
@@ -140,7 +142,9 @@ $(document).ready(function(){
 								$("#eventslist").append(div+image+tags+title+club+desc+button);
             }
         },
->>>>>>> 45f595f892dff6f0a31d0fb383d9e0de0d012c3b
+      });
+
+
 
     $("#search-button").click(function(){
       if(!($("#name-input").val()==="")){
@@ -167,5 +171,4 @@ $(document).ready(function(){
       searchDate();
     });
 
-});
-
+    });

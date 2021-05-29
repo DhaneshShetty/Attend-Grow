@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="common.css">
     <script src=https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js></script>
-    <script src="manage_events.js"></script>
+    <script src="profile.js"></script>
 </head>
 <body>
     <nav class="navbar navbar-expand-sm" style="background-color: #073B4C;padding:10px">
@@ -18,7 +18,7 @@
                 <a href="events.html" style="color: white;padding: 10px;">Events</a>
             </li>
             <li class="nav-item">
-                <a href="/registered" style="color: white;padding: 10px;">Registered Events</a>
+                <a href="profile.html" style="color: white;padding: 10px;">Profile</a>
             </li>
             <li class="nav-item">
                 <a href="manage_events.html" style="color: white;padding: 10px;">Manage Events</a>
@@ -28,22 +28,16 @@
             </li>
           </ul>
     </nav>
-    <div class="row" style="background-color: #00B4D8;margin: 20px;">
-        <div class="col-sm-10"  style="background-color: #00B4D8;">
-            <h3 style="color: white;">Get Free Listing of your event , use or registration portal <br> or redirect to your own portal, and no worries of publicity.Post your event now.</h3>
-        </div>
-        <div class="col-sm-2"  style="background-color: #00B4D8;">
-            <a href="postevents.html">
-            <button style="margin: 19px; color: #00B4D8;background-color:white ;border-color: white;padding-right: 20px;padding-left: 20px;padding-top: 10px;padding-bottom: 10px;">POST</button>
-            </a>
-        </div>
-    </div>
     <div>
-        <h3 style="color: #00B4D8;margin-left: 20px;">Your events:</h3><br>
+        <h3 style="margin-left: 20px;margin-top: 10px;"> <span  id="title_anim"></span></h3>
+        <div id="NAME"></div>
+        <div id="MAIL"></div>
+        <div id="REG"></div>
+        <h3 style="color: #00B4D8;margin-left: 20px;">Registered events:</h3><br>
         <h4 style="margin-left: 30px;"><input type="button" class="btn btn-primary" value="On Going"></h4><br>
         <div id="OnGoing"></div>
         <h4 style="margin-left: 30px;"><input type="button" class="btn btn-primary" value="Upcoming"></h4><br>
-        <div id="upcoming"></div><br>
+        <div id="upcoming"></div>
         <h4 style="margin-left: 30px;"><input type="button" class="btn btn-primary" value="Completed"></h4><br>
         <div id="completed"></div>
     </div>
@@ -55,7 +49,7 @@
                 <a href="events.html" style="color: white;padding: 10px;">Events</a>
             </li>
             <li class="nav-item">
-                <a href="profile.html" style="color: white;padding: 10px;">Profile</a>
+                <a href="/registered" style="color: white;padding: 10px;">Registered Events</a>
             </li>
             <li class="nav-item">
                 <a href="manage_events.html" style="color: white;padding: 10px;">Manage Events</a>

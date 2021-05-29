@@ -3,22 +3,28 @@
     position: relative;
     height:100px;
 }
+body{
+    overflow-x: hidden;
+}
 #eventitem{
-    border-width:2px;
-    border-style:solid;
-    border-color:#0077B6;
+    border:1px solid #000C66;
     border-radius:10px;
     margin:10px;
     padding:10px;
-    background-color: aliceblue;
-    margin: 30px;
+    height: max-content;
 }
 #eventitem:hover{
     box-shadow: 0 0 23px rgb(88, 66, 141);
     border-radius: 9px;
 }
 .eventButton{
-    background-color: #023E8A;
+    background-color: white;
+    color: #6C63FF;
+    border-radius: 2px;
+    border: 1px solid#6C63FF;
+}
+.eventButton:hover{
+    background-color: #6C63FF;
     color: white;
 }
 .eventtag{

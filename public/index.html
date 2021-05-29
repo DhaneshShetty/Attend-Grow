@@ -10,7 +10,7 @@
             var array=["A","t","t","e","n","d","","&","","G","r","o","w"];
             function animation(k)
             {               
-                $("#title_anim").append("<span style='color:#023E8A;font-size: 50px;'>"+array[k]+"</span>")            
+                $("#title_anim").append("<span style='color:#000C66;font-size: 50px;'>"+array[k]+"</span>")            
             }
             setInterval(function(){
                 if(p<array.length)
@@ -29,25 +29,25 @@
                 var button="<button align=right class=eventButton>View More</button></div>"
                 $("#events").append(d+title+club+desc+button);
             }
-            $("#events").append("<div class=col-sm-2 align=center height=100px><a href=events.html><button class=eventButton align=center>See all events</button></a></div></div>");
+            $("#events").append("<div class=col-sm-2 style='align-self:center;' height=100px><a href=events.html><button class=eventButton align=center>See all events</button></a></div></div>");
         })
         </script>
     </head>
     <body>        
-            <nav class="navbar navbar-expand-sm" style="background-color: #073B4C;padding:10px">
-                <a class="navbar-brand" style="color:white;padding: 10px;" href="index.html">Attend&Grow</a>
+            <nav class="navbar navbar-expand-sm" style="background-color: #FFFFFF;padding:10px;border-bottom: 10px solid #6C63FF;box-shadow: 0px 0px 10px 0px 6C63FF;">
+                <a class="navbar-brand" style="color:#000C66;padding: 10px;" href="index.html">Attend&Grow</a>
                 <ul class="navbar-nav" style="align-self: right;">
                     <li class="nav-item">
-                        <a href="events.html" style="color: white;padding: 10px;">Events</a>
+                        <a href="events.html" style="color: #000C66;padding: 10px;">Events</a>
                     </li>
                     <li class="nav-item">
-                        <a href="/registered" style="color: white;padding: 10px;">Registered Events</a>
+                        <a href="/registered" style="color: #000C66;padding: 10px;">Registered Events</a>
                     </li>
                     <li class="nav-item">
-                        <a href="manage_events.html" style="color: white;padding: 10px;">Manage Events</a>
+                        <a href="manage_events.html" style="color: #000C66;padding: 10px;">Manage Events</a>
                     </li>
                     <li class="nav-item">
-                        <a href="/login.html" style="color: white;padding: 10px;">Login/SignUp</a>
+                        <a href="/login.html" style="color: #000C66;padding: 10px;">Login/SignUp</a>
                     </li>
                   </ul>
             </nav>
@@ -60,40 +60,42 @@
         </div>
         <div class="row" id="events" style="padding: 20px;"></div>
         
-        <div class="container-fluid" style="padding: 20px;">
-            <div width="40%" style="position: relative;left:10px">
-                <h4>Find all events of VIT in one place</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br> Consectetur nisi, tempor pharetra id viverra. Urna sit porttitor arcu consectetur tincidunt feugiat a risus eleifend.<br> Libero elementum odio aliquam dui. Sollicitudin nisl consectetur lacus, pretium morbi.</p>
+        <div class="row" style="padding: 20px;">
+            <div class="col-sm-6">
+                <img src="res/undraw_events_2p66.svg" width=100% style="max-height:300px;">
             </div>
+            <div class="col-sm-6" style="align-self: center;">
+                <h3 style="color:#6C63FF;">Find all events of VIT in one place</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br> Consectetur nisi, tempor pharetra id viverra. Urna sit porttitor arcu consectetur tincidunt feugiat a risus eleifend.<br> Libero elementum odio aliquam dui. Sollicitudin nisl consectetur lacus, pretium morbi.</p>
+            </div>                
+        </div>
+
+        <div class="row flex-column-reverse flex-sm-row" style="padding: 20px;">
+            <div class="col-sm-6" style="align-self: center;text-align:end;">
+                <h3 style="color:#6C63FF;">Post events and get registrations</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br> Consectetur nisi, tempor pharetra id viverra. Urna sit porttitor arcu consectetur tincidunt feugiat a risus eleifend.<br> Libero elementum odio aliquam dui. Sollicitudin nisl consectetur lacus, pretium morbi.</p>
+            </div>  
+            <div class="col-sm-6">
+                <img src="res/undraw_teaching_f1cm.svg" width=100% style="max-height:300px;">
+            </div>                         
+        </div>
+
+        <div class="row" style="padding: 20px;">            
+            <div class="col-sm-6">
+                <img src="res/undraw_road_to_knowledge_m8s0.svg" width=100% style="max-height:300px;">
+            </div>   
+            <div class="col-sm-6" style="align-self: center;">
+                <h3 style="color:#6C63FF;">Improve your knowledge</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br> Consectetur nisi, tempor pharetra id viverra. Urna sit porttitor arcu consectetur tincidunt feugiat a risus eleifend.<br> Libero elementum odio aliquam dui. Sollicitudin nisl consectetur lacus, pretium morbi.</p>
+            </div>                        
+        </div>
         
-            <div width="40%" align="right">
-                <h4>Post events and get registrations</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br> Consectetur nisi, tempor pharetra id viverra. Urna sit porttitor arcu consectetur tincidunt feugiat a risus eleifend.<br> Libero elementum odio aliquam dui. Sollicitudin nisl consectetur lacus, pretium morbi.</p>
-            </div>
-            <div width="40%">
-                <h4>Sort events based on your interest</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br> Consectetur nisi, tempor pharetra id viverra. Urna sit porttitor arcu consectetur tincidunt feugiat a risus eleifend.<br> Libero elementum odio aliquam dui. Sollicitudin nisl consectetur lacus, pretium morbi.</p>
-            </div>
         </div>
-        <div class="row" style="text-align: center;background-color: #48CAE4;padding:10px;">
-            <div class="col-sm-4"><b>About</b><p>We found finding it difficult to read through mails, follow numerous clubs on social media.So here we come up with a website where we can see all events of VIT listed at one place with the ability to filter based on tech stack,date,time,club etc.Product designed by VITians for VITians.</p></div>
-            <div class="col-sm-4"><b>Discover</b><ul class="navbar-nav" style="align-self: right;">
-                <li class="nav-item">
-                    <a href="events.html" style="color: white;padding: 10px;">Events</a>
-                </li>
-                <li class="nav-item">
-                    <a href="/registered" style="color: white;padding: 10px;">Registered Events</a>
-                </li>
-                <li class="nav-item">
-                    <a href="manage_events.html" style="color: white;padding: 10px;">Manage Events</a>
-                </li>
-                <li class="nav-item">
-                    <a href="/login.html" style="color: white;padding: 10px;">Login/SignUp</a>
-                </li>
-              </ul></div>
-            <div class="col-sm-4"><b>Contact Us</b><p>Email:attendandgrow@vit.ac.in</p><p>Ph no:123456789</p></div>
+        <div class="row" style="text-align: center;background-color: #000C66;min-height: 300px;align-items: center;">
+            <div class="col-sm-6" style="color: white;"><b>About</b><p style="margin:10px">We found finding it difficult to read through mails, follow numerous clubs on social media.So here we come up with a website where we can see all events of VIT listed at one place with the ability to filter based on tech stack,date,time,club etc.Product designed by VITians for VITians.</p></div>           
+            <div class="col-sm-6" style="color: white;"><b>Contact Us</b><p>Email:attendandgrow@vit.ac.in</p><p>Ph no:123456789</p></div>
         </div>
-        <div class="container-fluid" style="text-align: center;background-color: #023E8A;padding:10px;">
+        <div class="container-fluid" style="text-align: center;background-color: #050A30;padding:10px;">
             <span style="color:white">Developed by VITians for VITians</span>
         </div>
     </body>

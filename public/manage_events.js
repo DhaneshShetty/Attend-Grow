@@ -2,6 +2,7 @@ $(document).ready(function(){
     $.ajax("/users/registeredEvents",
     {
         type:'GET',
+        dataType:'json',
         success:function(data1,status,xhr)
         {
             var arr=data1.result
@@ -52,7 +53,7 @@ $(document).ready(function(){
                 var button="<div class=col-sm-2 ><a><button style=background-color:#023E8A;color:#FFFFFF >View More</button></a></div></div>"
                 $(differ).append(div+image+tags+title+club+desc+button);
             }
-            
+
         }
     });
 });

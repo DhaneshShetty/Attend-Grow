@@ -8,6 +8,11 @@ const eventSchema = new Schema({
       required: true,
       trim: true
     },
+    organiser:{
+      type: String,
+      required: true,
+      trim: true
+    },
     description:{
       type: String,
       required: true

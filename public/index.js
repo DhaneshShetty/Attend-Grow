@@ -60,7 +60,7 @@ $(document).ready(function(){
         success:function(data1,status,xhr){
             var obj =data1;    
             for(var i=0;i<obj.length;i++){
-                var d="<div class=col-sm-3 id=eventitem style='max-height:500px'>"
+                var d="<div class=col-sm-3 id=eventitem style='max-height:500px;min-height: max-content;'>"
                 var title="<h4 style=color:#6C63FF>"+obj[i].name+"</h4>"
                 var club="<p style=color:#000C66>"+obj[i].date+"</p>"
                 var desc="<p style='text-overflow:ellipsis;word-wrap: break-word;overflow-x:visible'>"+obj[i].description+"</p>"

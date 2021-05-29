@@ -70,6 +70,9 @@ function authenticator(req,res,next){
     const token = req.cookies.accessToken;
     const refresh = req.cookies.refreshToken;
     if(token == null){
+        if(req.xhr){
+            return res.status(403).send({success:true});
+        }
         return res.redirect('../login.html');
     }
     jwt.verify(token,process.env.ACCESS_TOKEN_SECRET,(err,user)=>{

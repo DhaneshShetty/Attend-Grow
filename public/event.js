@@ -39,6 +39,9 @@ $(document).ready(function(){
                 alert('U have been registered');
             },
             error:function(xhr,status,error){
+                if(xhr.status==403){
+                    window.location.href='/login.html';
+                }
                 console.log("Error:"+error);
                 console.log("Status:"+status);
             }
@@ -46,3 +49,4 @@ $(document).ready(function(){
     });
 
 });
+

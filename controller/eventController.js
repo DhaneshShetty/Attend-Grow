@@ -63,6 +63,18 @@ const getParticipants = (req,res)=>{
 
 }
 
+const checkRegistered = (req,res)=>{
+    const id=req.body.id;
+    const email=req.user.email;
+    User.find({$and:[{email:email},{regEvents:{$elemMatch:{$eq:id}}}]}).then(users=>{
+        res.status(200).send(users);
+    }).catch(err=>{
+        console.log(err);
+        res.status(400);
+    });
+
+}
+
 const register = (req,res)=>{
     const user = req.user;
     const id=req.body.id;
@@ -74,4 +86,4 @@ const register = (req,res)=>{
     });
 }
 
-module.exports={postEvent,getAllEvents,getEvent,getParticipants,register,upload};
+module.exports={postEvent,getAllEvents,getEvent,getParticipants,register,upload,checkRegistered};

@@ -38,12 +38,16 @@ const loginUser = async(req,res) =>{
                 const token = new Token({refreshtoken:refreshToken});
                 token.save()
                 .then(()=>{
-                    res.cookie("requestToken",refreshToken,{
+                    res.cookie("refreshToken",refreshToken,{
                         httpOnly: true,
                         sameSite: "strict" });
                     res.cookie("accessToken",accessToken,{
                         httpOnly: true,
                         sameSite: "strict" });
+                    res.cookie("loggedIn",'true',{
+                        httpOnly:false,
+                        sameSite:"strict"
+                    });
                     res.redirect('../');
                 })
                 .catch(err=>console.log(err));
@@ -135,6 +139,7 @@ const logOut = (req,res) =>{
     Token.deleteOne({refreshtoken:refreshToken}).then(()=>{
         res.clearCookie('accessToken');
         res.clearCookie('refreshToken');
+        res.clearCookie('loggedIn');
         res.status(204).json({Success:true,data:'LogOut Successful'})
     }).catch(err=>{
         console.log(err);

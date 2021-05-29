@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const {createUser,loginUser,getProfile,eventsList,authenticator,getNewToken,logOut} = require('../controller/userController');
+const {createUser,loginUser,getProfile,registeredEventsList,authenticator,postedEventsList,logOut} = require('../controller/userController');
 //get users profile
 router.get('/profile',authenticator,getProfile);
 ///get list of events registered by user

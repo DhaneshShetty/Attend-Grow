@@ -23,6 +23,9 @@ const userSchema = new Schema({
     regEvents:{
         type:Array
     },
+    postedEvents:{
+        type:Array
+    },
     regNo:{
         type:String,
         required:true

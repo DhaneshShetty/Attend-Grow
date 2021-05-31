@@ -15,6 +15,8 @@ if(getCookie('loggedIn')){
 }
 else{
     $('#login_logout').text("Log In/SignUp");
+    $('#profile').attr('href','/login.html');
+    $('#manage_events').attr('href','/login.html');
 }
 $('#login_logout').click(function(){
     if(getCookie('loggedIn')){

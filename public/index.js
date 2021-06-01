@@ -23,7 +23,7 @@ $(document).ready(function(){
                 var d="<div class=col-sm-3 id=eventitem style='max-height:500px;min-height: max-content;'>"
                 var title="<h4 style=color:#6C63FF>"+obj[i].name+"</h4>"
                 var club="<p style=color:#000C66>"+obj[i].date+"</p>"
-                var desc="<p style='text-overflow:ellipsis;word-wrap: break-word;overflow-x:visible'>"+obj[i].description+"</p>"
+                var desc="<p style='text-overflow:ellipsis;word-wrap: break-word;overflow:hidden;max-height:50px'>"+obj[i].description+"</p>"
                 var button="<form action='event.html' method='get'>"
 													+	"<input type='hidden' name='event_id' value='" + data1[i]._id + "'>"
 													+ "<input type='submit' value='View More' class='eventButton'> </form></div>"

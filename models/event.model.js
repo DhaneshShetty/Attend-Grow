@@ -8,6 +8,11 @@ const eventSchema = new Schema({
       required: true,
       trim: true
     },
+    club:{
+      type:String,
+      required:true,
+      trim:true
+    },
     description:{
       type: String,
       required: true
@@ -20,6 +25,10 @@ const eventSchema = new Schema({
       type: String,
       required: true
     },
+    end_date:{
+      type:String,
+      required:true
+    },
     img:{
       data: Buffer,
       contentType: String
@@ -29,13 +38,7 @@ const eventSchema = new Schema({
       required: true
     },
     tags:{
-      type:String
-    },
-    isUsingRegPortal:{
-      type: Boolean
-    },
-    regLink:{
-      type: String
+      type:Array
     }
 });
 

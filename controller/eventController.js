@@ -29,7 +29,7 @@ const postEvent = async (req,res)=>{
              id= docum._id;
              id=""+id
              console.log(id)
-             User.updateOne({email:"dhaneshshetty65@gmail.com"},{$push: { postedEvents:id } }).then(response=>{
+             User.updateOne({email:user.email},{$push: { postedEvents:id } }).then(response=>{
                 res.status(200).json({Success:true,data:response})
             }).catch(err=>{
                 console.log(err);

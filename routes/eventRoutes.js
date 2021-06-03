@@ -5,7 +5,7 @@ const {postEvent,getAllEvents,getEvent,getParticipants,register,upload,checkRegi
 const {authenticator} = require('../controller/userController');
 
 //routes post event
-router.post('/event_post',upload.single('image'), postEvent);
+router.post('/event_post',upload.single('image'),authenticator, postEvent);
 //get list of event
 router.get('/events',getAllEvents);
 //get particular event

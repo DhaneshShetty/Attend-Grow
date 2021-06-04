@@ -22,14 +22,14 @@ router.use(express.urlencoded({ extended: true }))
 
 
 const postEvent = async (req,res)=>{
-    const details=new EVENT_OBJ({name:req.body.name ,description:req.body.description ,time:req.body.time,date:req.body.date,img:{data:fs.readFileSync(path.join('Uploads/' + req.file.filename)),contentType: 'image/png'},venue:req.body.venue ,tags:req.body.tags,isUsingRegPortal:req.body.isUsingRegPortal,regLink:req.body.regLink});
+    const details=new EVENT_OBJ({name:req.body.name ,club:req.body.club,description:req.body.description ,time:req.body.time,date:req.body.date,end_date:req.body.end_date,img:{data:fs.readFileSync(path.join('Uploads/' + req.file.filename)),contentType: 'image/png'},venue:req.body.venue ,tags:req.body.tags});
     try{
         await details.save( function(err,docum)
         {
              id= docum._id;
              id=""+id
              console.log(id)
-             User.updateOne({email:user.email},{$push: { postedEvents:id } }).then(response=>{
+             User.updateOne({email:req.user.email},{$push: { postedEvents:id } }).then(response=>{
                 res.status(200).json({Success:true,data:response})
             }).catch(err=>{
                 console.log(err);

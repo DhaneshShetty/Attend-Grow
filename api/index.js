@@ -5,8 +5,8 @@ const cookieParser =require('cookie-parser');
 const app = express();
 require('dotenv').config();
 
-const eventRoutes = require('./routes/eventRoutes');
-const userRoutes = require('./routes/userRoutes');
+const eventRoutes = require('../routes/eventRoutes');
+const userRoutes = require('../routes/userRoutes');
 
 app.use(express.static('public'));
 app.use(cors());

@@ -80,7 +80,7 @@ function authenticator(req,res,next){
         if(err) {
             Token.find({refreshtoken:refresh}).then(token=>{
                 if(token==null) return res.status(403).redirect('../login.html');
-                jwt.verify(refreshToken,process.env.REFRESH_TOKEN_SECRET,(err,user)=>{
+                jwt.verify(token,process.env.REFRESH_TOKEN_SECRET,(err,user)=>{
                     if(err) return res.status(403).redirect('../login.html');
                     const accessToken = jwt.sign({email:user.email},process.env.ACCESS_TOKEN_SECRET,{expiresIn:'60m'});
                     res.cookie('accessToken',accessToken,{
@@ -154,7 +154,7 @@ const postedEventsList =(req,res) =>{
             })
             
         }
-        return res.status(200).json({Success:true,result:data_arr})
+        return await res.status(200).json({Success:true,result:data_arr})
     }).catch(err=>{
         console.log(err);
         res.status(400).json({Success:false,Message:err});

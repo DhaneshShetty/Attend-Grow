@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    $.ajax("/users/registeredEvents",
+    $.ajax("/users/postedEvents",
     {
         type:'GET',
         success:function(data1,status,xhr)
@@ -27,7 +27,12 @@ $(document).ready(function(){
             var p=0,q=0,r=0;
             for(var i=0;i<arr.length;i++)
             {
+                if(arr[i]!=null){
                 var eventDate=new Date(arr[i].date)
+                }
+                else{
+                    var eventDate=new Date("2021-01-01");
+                }
                 var endeventDate=new Date(arr[i].end_date)
                 var endeventTime=endeventDate.getTime()
                 var eventTime=eventDate.getTime()

@@ -11,7 +11,7 @@ function displayItem(data1){
   }
   var title="<br><p style=padding-top:10px>"+data1.name+"</p>"
   var club="<p>"+data1.club+"</p>"
-  var club = "";
+  
   var desc="<p>"+data1.description+"</p></div>";
   var button="<form action='event.html' method='get'>"
             +	"<input type='hidden' name='event_id' value='" + data1._id + "'>"

@@ -3,15 +3,14 @@ function displayItem(data1){
   var img_data = bytesToBase64(data1.img.data.data);
   var image="<img class='eventItemImg col-md-4' src='data:" + data1.img.contentType + ";base64," + img_data + "' alt='Event Poster'>";
   var tags="<div id='desc' class='col-md-8'><br>";
-  var arr_strings=data1.tags
-  var arr=arr_strings.split(',')
+  var arr=data1.tags
   for(var j=0;j<arr.length;j++)
   {
       tags=tags+"<span class=eventtag>"+arr[j]+"</span>"
   }
+
   var title="<br><p class=eventTitle>"+data1.name+"</p>"
-  //var club="<p>"+data1.name+"</p>"
-  var club = "";
+  var club="<p>"+data1.club+"</p>"
   var desc="<p style='overflow:hidden;max-height:50px'>"+data1.description+"</p>";
   var button="<form action='event.html' method='get'>"
             +	"<input type='hidden' name='event_id' value='" + data1._id + "'>"

@@ -2,6 +2,7 @@ const User = require('../models/user.model');
 const Token = require('../models/refreshtoken.model');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
+const EVENT_OBJ = require("../models/event.model");
 
 
 const createUser = async(req,res)=>{
@@ -113,6 +114,9 @@ const registeredEventsList =(req,res) =>{
         if(user == null){
             return res.status(404).json({Success:false,Message:'Cannot find User'});
         }
+        var name=user[0].name
+        var email=user[0].email
+        var reg_no=user[0].regNo
         var arr=user[0].regEvents
         var data_arr=[]
         for(var i=0;i<arr.length;i++)
@@ -125,7 +129,7 @@ const registeredEventsList =(req,res) =>{
             })
             
         }
-        return res.status(200).json({Success:true,result:data_arr})
+        return res.status(200).json({Success:true,result:data_arr,name:name,email:email,reg:reg_no})
     }).catch(err=>{
         console.log(err);
         res.status(400).json({Success:false,Message:err});
@@ -134,7 +138,7 @@ const registeredEventsList =(req,res) =>{
 
 
 const postedEventsList =(req,res) =>{
-    User.find({email:"dhaneshshetty65@gmail.com"}).then(async user=>{
+    User.find({email:req.user.email}).then(async user=>{
         if(user == null){
             return res.status(404).json({Success:false,Message:'Cannot find User'});
         }

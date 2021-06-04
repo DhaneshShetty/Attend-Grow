@@ -9,6 +9,18 @@
         <script src="base64.js" charset="utf-8"></script>
         <script src="events.js"></script>
         <script src="nav_login.js"></script>
+        <script>
+            setInterval(a,1000);
+            function a(){
+                if($("#eventslist").is(':empty'))
+            {
+
+            }
+            else{
+                $('#loading').css('display','none')
+            }
+            }
+        </script>
     </head>
     <body>
         <nav class="navbar navbar-expand-sm" style="background-color: #FFFFFF;padding:10px;border-bottom: 10px solid #6C63FF;box-shadow: 0px 0px 10px 0px 6C63FF;">
@@ -28,6 +40,8 @@
                 </li>
               </ul>
         </nav>
+
+        <div id="loading" ></div> 
         <h1 class="events-heading" style="color: #000C66;margin-top:30px;margin-left: 30px;">Find your next event</h2>
         <div class="search-div">
           <input type="text" class="events-search" id="name-input" name="name" style="margin-left:30px; margin-right:0; border-top-right-radius: 0px; border-bottom-right-radius: 0px;" placeholder="Search by keywords"><button type="button" id="search-button" class="events-search" style="border-top-left-radius: 0px; border-bottom-left-radius: 0px; background-color: white;" name="search">🔍</button>

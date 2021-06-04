@@ -42,8 +42,10 @@
         });
         setInterval(tags_arr,100);
         });
-
+        console.log($("#tags").val())
+        
     </script>
+   
 </head>
 <body  style="background-color: #EEEEEE;">
     <nav class="navbar navbar-expand-sm" style="background-color: #FFFFFF;padding:10px;border-bottom: 10px solid #6C63FF;box-shadow: 0px 0px 10px 0px 6C63FF;">
@@ -64,70 +66,73 @@
           </ul>
     </nav>
 
-    <h2 style="color: #6C63FF;margin-top:30px;margin-left: 20px;">Post Events</h2>
-    <p style="margin-left:20px">Post your event here,get publicity for the event and even registration through our portal</p><br>
+    <h2 style="color: #0077B6;margin-top:30px;margin-left: 20px;">Post Events</h2>
+    <p style="margin:20px">Post your event here,get publicity for the event and even registration through our portal</p><br>
 
-   <div style="margin-right: 20px;margin-left: 20px;margin-top: 10px;margin-bottom: 30px;width:fit-content;background-color:#6b63ff0c" class="div_pos" >
+   <div style="margin-right: 10%;margin-left: 20%;margin-top: 10px;margin-bottom: 30px;width:fit-content;background-color: rgb(255, 255, 255)" class="div_pos" >
         <table>
-            <form action="../events/event_post" method="POST" enctype="multipart/form-data">
+            <form action="../events/event_post" method="POST" enctype="multipart/form-data" id="event_forms">
              <tr>
-                 <td colspan="3" style="padding-left: 30px;padding-right: 30px;padding-top: 30px;" >
-                    <input type="text" placeholder="Enter event name" class="form-control" style="width: 100%;height:40px;margin-bottom: 10px;" class="b" name="name">
+                 <td colspan="3" style="padding-left: 30px;padding-right: 30px;padding-top: 30px;padding-bottom: 10px;" id="eventrow">
+                    <input type="text" placeholder="Enter event name" class="form-control" style="width: 100%;height:40px;" class="b" name="name"  required>
                 </td>
              </tr>
              <tr>
+                <td colspan="3" style="padding-left: 30px;padding-right: 30px;" id="eventrow">
+                   <input type="text" placeholder="Enter organization name" class="form-control" style="width: 100%;height:40px;"  name="club"  required>
+               </td>
+            </tr>
+             <tr>
                  <td colspan="2" rowspan="4" class="padding_elm" style="padding-left: 30px;padding-right: 30px;padding-top: 10px;">
-                     <textarea rows="15" cols="35" class="form-control" placeholder="Enter description" name="description"></textarea>
+                     <textarea rows="15" cols="35" class="form-control" placeholder="Enter description" name="description" id="description" required></textarea>
                  </td>
                  <td style="padding-left: 30px;padding-right: 30px;padding-top: 10px;" class="padding_elm">
-                     Enter time: <input type="time" class="form-control" name="time">
+                     Enter time: <input type="time" class="form-control" name="time" id="time" required>
                  </td>
              </tr>
              <tr>
                  <td style="padding-left: 30px;padding-right: 30px;padding-top: 10px;" class="padding_elm">
-                     Select date: <input type="date" class="form-control" name="date">
+                     Start date: <input type="date" class="form-control" name="date" id="date" required>
                  </td>
 
              </tr>
              <tr>
-                 <td style="padding-left: 30px;padding-right: 30px;padding-top: 10px;" class="padding_elm">
-                     Upload pic: <input type="file" class="form-control" name="image">
-                 </td>
-
+                <td style="padding-left: 30px;padding-right: 30px;padding-top: 10px;" class="padding_elm">
+                    End date: <input type="date" class="form-control" name="end_date" id="date" required>
+               </td>
              </tr>
              <tr>
                  <td style="padding-left: 30px;padding-right: 30px;padding-top: 10px;" class="padding_elm">
-                     <input type="text" placeholder="Enter venue" style="width: 100%;height: 40px;"class="form-control" name="venue">
+                     Upload pic: <input type="file" class="form-control" name="image" id="image" required>
                  </td>
-             </tr>
-             <tr>
-                 <td colspan="2" style="padding-left: 30px;padding-right: 30px;padding-top: 10px;max-width:30px" class="padding_elm">
-                     <div  id="tag" style="overflow:visible;" >
 
-
-                     </div>
-                 </td>
-                 <td colspan="1" style="padding-left: 30px;padding-right: 30px;padding-top: 10px;" class="padding_elm">
-                     <input type="text" placeholder="Enter tag" class="form-control" style="width: 100%;margin-right:90px" id="tag1" >
-                     <br>
-                     <input type="button" value="add" id="add_tag">
-                     <input type="button" value="delete" id="delete">
-                     <input type="text" name="tags" style="visibility: hidden;" id="tagsss">
+             </tr>
+             <tr>
+                 <td style="padding-left: 30px;padding-right: 30px;padding-top: 10px;" class="padding_elm" colspan="3">
+                     <input type="text" placeholder="Enter venue" style="width: 100%;height: 40px;"class="form-control" name="venue" id="venue" required>
                  </td>
              </tr>
              <tr>
-                 <td colspan="3"  class="padding_elm" style="padding-left: 30%;padding-right: 30px;padding-top: 10px;">
-                     <input type="checkbox" name="isUsingRegPortal" value="true" > Want to use our registration portal?
+                 <td colspan="3">
+                     <select class="form-control" style=" margin-top: 10px;width: 92%;margin-left: 4%;" multiple="multiple" id="tags" name="tags" required>
+                        <option disabled="disabled">---Select tags--- (Shift+click to select multiple tags)</option>
+                         <option>APP</option>
+                         <option>WEB</option>
+                         <option>AI</option>
+                         <option>ML</option>
+                         <option>TECH</option>
+                         <option>NON-TECH</option>
+                         <option>FUN</option>
+                         <option>UI/UX</option>
+                         <option>AR</option>
+                         <option>VR</option>
+                     </select>
                  </td>
              </tr>
-             <tr>
-                 <td colspan="3"  class="padding_elm" style="padding-left: 30px;padding-right: 30px;padding-top: 10px;">
-                     <input type="text" placeholder="Link to registration portal" style="width: 100%;height: 40px;" class="form-control" name="regLink">
-                 </td>
              </tr>
              <tr >
                  <td colspan="3" class="padding_elm" >
-                     <input type="submit" id="subs"  style="padding-left: 30px;padding-right: 30px;padding-top: 20px;padding-bottom: 20px;color: white;background-color: #6C63FF;box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); border-color: whitesmoke;margin: 30px;margin-left: 40%;">
+                     <input type="submit"   style="padding-left: 30px;padding-right: 30px;padding-top: 20px;padding-bottom: 20px;color: white;background-color: rgba(6, 214, 160, 0.65);box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); border-color: whitesmoke;margin: 30px;margin-left: 40%;">
                  </td>
              </tr>
             </form>

@@ -4,9 +4,9 @@ const {createUser,loginUser,getProfile,registeredEventsList,authenticator,posted
 //get users profile
 router.get('/profile',authenticator,getProfile);
 ///get list of events registered by user
-router.get('/registeredEvents',registeredEventsList);
+router.get('/registeredEvents',authenticator,registeredEventsList);
 //get list of events posted by user
-router.get('/postedEvents',postedEventsList)
+router.get('/postedEvents',authenticator,postedEventsList)
 //create user(signup)
 router.post('/signup',createUser);
 //login

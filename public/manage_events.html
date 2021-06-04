@@ -10,6 +10,25 @@
     <script src=https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js></script>
     <script src="manage_events.js"></script>
     <script src="nav_login.js"></script>
+    <script>
+        $('html, body').css({
+                overflow: 'hidden',
+                                                                        
+                });
+        setInterval(a,1000);
+        function a(){
+            if($("#OnGoing").is(':empty')&&$("#upcoming").is(':empty')&&$("#completed").is(':empty'))
+        {
+
+        }
+        else{
+            $('#loading').css('display','none')
+            $('html, body').css({
+                    overflow: 'auto',
+                });
+        }
+        }
+    </script>
 </head>
 <body>
     <nav class="navbar navbar-expand-sm" style="background-color: #FFFFFF;padding:10px;border-bottom: 10px solid #6C63FF;box-shadow: 0px 0px 10px 0px 6C63FF;">
@@ -29,6 +48,9 @@
             </li>
           </ul>
     </nav>
+     <div id="loading" >         
+            
+    </div> 
     <div class="row" style="background-color: #00B4D8;margin: 20px;">
         <div class="col-sm-10"  style="background-color: #00B4D8;">
             <h3 style="color: white;">Get Free Listing of your event , use or registration portal <br> or redirect to your own portal, and no worries of publicity.Post your event now.</h3>

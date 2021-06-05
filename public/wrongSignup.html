@@ -4,9 +4,30 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="refresh" content="6; URL=/signup.html" />
+    <meta http-equiv="refresh" content="6; URL=/postevents.html" />
     <script src=https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js></script>
     <title>Document</title>
+    <script src="https://unpkg.com/react@16/umd/react.production.min.js"></script> 
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script> 
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+    <style>
+        #error{
+            border:dashed;border-color:rgb(231, 71, 71);padding:30px;width: fit-content;position:absolute;top: 50%;left: 50%;margin-right: -50%;transform: translate(-50%, -50%);
+        }
+    </style>
+    <script type="text/babel">
+    function Error(){
+        return(
+            <div id='error'>
+                <img src="res/remove (1).svg" style={{width: '300px',height: '100px'}}/>
+                <h3 style={{marginLeft: '30px'}}>Oops! Something went wrong</h3>
+                <h4 style={{marginLeft: '95px'}}>Please try again</h4>
+                <h5 style={{marginLeft: '40px'}} id="t1">Redirecting to Sign Up page in <span></span> secs</h5>
+            </div>            
+        )
+    }
+    ReactDOM.render(<Error/>,document.getElementById("body"));
+    </script>
     <script>
         $(document).ready(function(){
             var i=5
@@ -22,13 +43,9 @@
             var k=setInterval(time,1000)
         });
     </script>
+
 </head>
 <body>
-    <div style="border:dashed;border-color:rgb(231, 71, 71);padding:30px;width: fit-content;position:absolute;top: 50%;left: 50%;margin-right: -50%;transform: translate(-50%, -50%);">
-        <img src="res/remove (1).svg" style="width: 300px;height: 100px;">
-        <h3 style="margin-left: 30px;">Oops! Something went wrong</h3>
-        <h4 style="margin-left: 95px;">Please try again</h4>
-        <h5 style="margin-left: 40px;" id="t1">Redirecting to Sign up page in <span style="font-size: 25px;"></span> secs</h5>
-    </div>
+    <div id="body"></div>
 </body>
 </html>

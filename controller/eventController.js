@@ -63,6 +63,7 @@ const getEvent = async (req,res)=>{
 
 const getParticipants = (req,res)=>{
     const id=req.body.id;
+    console.log(id);
     User.find({regEvents:{$elemMatch:{$eq:id}}}).then(users=>{
         res.status(200).send(users);
     }).catch(err=>{

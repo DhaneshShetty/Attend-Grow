@@ -80,7 +80,9 @@ success:function(data1,status,xhr)
        var title="<br><p style=padding-top:10px>"+arr[i].name+"</p>"
        var club="<p>"+arr[i].club+"</p>"
        var desc="<p>"+arr[i].description+"</p></div>"
-       var button="<div class=col-sm-2 ><a><button style=background-color:#023E8A;color:#FFFFFF >View More</button></a></div></div>"
+       var button="<div class=col-sm-2 ><form action='event.html' method='get'>"
+       +	"<input type='hidden' name='event_id' value='" + arr[i]._id + "'>"
+       + "<input type='submit' class='eventButton' value='View More'> </form></div>"
        $(differ).append(div+image+tags+title+club+desc+button);
    }
    if(p==0)

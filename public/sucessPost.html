@@ -3,30 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta http-equiv="refresh" content="5; URL=/manage_events.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="refresh" content="6; URL=/postevents.html" />
     <script src=https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js></script>
     <title>Document</title>
     <script>
         $(document).ready(function(){
             var i=5
-            var k=setInterval(time(),1000)
             function time(){
-                $("#t1 span").text(i)
+                $("#t1 span").text(""+i)
+                console.log("hello")
                 i--;
                 if(i==0)
                 {
                     clearInterval(k)
                 }
             }
+            var k=setInterval(time,1000)
         });
     </script>
 </head>
 <body>
-    <div style="border:dashed;border-color:rgb(181, 240, 181);padding:30px;width: fit-content;position:absolute;top: 50%;left: 50%;margin-right: -50%;transform: translate(-50%, -50%);">
-        <img src="res/check.svg" style="width: 300px;height: 100px;">
-        <h3 style="margin-left: 80px;">Successfully Posted</h3>
-        <h5 style="margin-left: 50px;" id="t1">Redirecting to Manage Events page in <span >5</span> secs</h5>
+    <div style="border:dashed;border-color:rgb(231, 71, 71);padding:30px;width: fit-content;position:absolute;top: 50%;left: 50%;margin-right: -50%;transform: translate(-50%, -50%);">
+        <img src="res/remove (1).svg" style="width: 300px;height: 100px;">
+        <h3 style="margin-left: 30px;">Oops! Something went wrong</h3>
+        <h4 style="margin-left: 95px;">Please try again</h4>
+        <h5 style="margin-left: 40px;" id="t1">Redirecting to PostEvents page in <span style="font-size: 25px;"></span> secs</h5>
     </div>
 </body>
 </html>

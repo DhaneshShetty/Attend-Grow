@@ -15,8 +15,8 @@ const createUser = async(req,res)=>{
         const hashedPassword = await bcrypt.hash(password,salt);
         const newUser = new User({email:email,name:name,password:hashedPassword,regNo:regNo,regEvents:[]});
         newUser.save()
-        .then(()=>res.status(201).json({Success:true}))
-        .catch(err=> res.status(400).json({Success:false,Message:err}));
+        .then(()=>res.redirect('/sucessSignup.html'))
+        .catch(err=> res.redirect('/wrongSignup.html'));
     }
     catch(error){
         console.log(error);

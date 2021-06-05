@@ -3,23 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta http-equiv="refresh" content="5; URL=/manage_events.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="refresh" content="6; URL=/manage_events.html" />
     <script src=https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js></script>
     <title>Document</title>
     <script>        
         $(document).ready(function(){
-            var i=5;         
-            var k=setInterval(time(),1000)   
-           
+            var i=5
             function time(){
-                $("#count").text(i+"");
+                $("#t1 span").text(""+i)
                 i--;
                 if(i==0)
                 {
                     clearInterval()
                 }
-            }         
+            }
+            var k=setInterval(time,1000)
         });
     </script>
     <script src="https://unpkg.com/react@16/umd/react.production.min.js"></script> 

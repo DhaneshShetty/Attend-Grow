@@ -30,10 +30,10 @@ const postEvent = async (req,res)=>{
              id=""+id
              console.log(id)
              User.updateOne({email:req.user.email},{$push: { postedEvents:id } }).then(response=>{
-                res.status(200).json({Success:true,data:response})
+                res.redirect("/sucessPost.html")
             }).catch(err=>{
                 console.log(err);
-                res.status(400);
+                res.redirect("/wrongPost.html")
             });
         });
     }

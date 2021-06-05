@@ -83,6 +83,7 @@ function authenticator(req,res,next){
                 jwt.verify(token,process.env.REFRESH_TOKEN_SECRET,(err,user)=>{
                     if(err) return res.status(403).redirect('../login.html');
                     const accessToken = jwt.sign({email:user.email},process.env.ACCESS_TOKEN_SECRET,{expiresIn:'60m'});
+                    req.user = user;
                     res.cookie('accessToken',accessToken,{
                         httpOnly: true,
                         sameSite: "strict" });

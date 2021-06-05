@@ -7,26 +7,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src=https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js></script>
     <title>Document</title>
-    <script>
+    <script>        
         $(document).ready(function(){
-            var i=5
-            var k=setInterval(time(),1000)
+            var i=5;         
+            var k=setInterval(time(),1000)   
+           
             function time(){
-                $("#t1 span").text(i)
+                $("#count").text(i+"");
                 i--;
                 if(i==0)
                 {
-                    clearInterval(k)
+                    clearInterval()
                 }
-            }
+            }         
         });
+    </script>
+    <script src="https://unpkg.com/react@16/umd/react.production.min.js"></script> 
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script> 
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+    <script type="text/babel">
+    function Success(){
+        return(
+            <div style={{border:'dashed',borderColor:"rgb(181, 240, 181)",padding:'30px',width: 'fit-content',position:'absolute',top:'50%',left: '50%',marginRight:'-50%',transform: "translate(-50%, -50%)"}}>
+                <img src="res/check.svg" style={{width: '300px',height: '100px'}}/>
+                <h3 style={{marginLeft: '80px'}}>Successfully Posted</h3>
+                <h5 style={{marginLeft: '50px'}} id="t1">Redirecting to Manage Events page in <span id="count"></span> secs</h5>
+            </div>
+        )
+    }
+    ReactDOM.render(<Success/>,document.getElementById("body"));
     </script>
 </head>
 <body>
-    <div style="border:dashed;border-color:rgb(181, 240, 181);padding:30px;width: fit-content;position:absolute;top: 50%;left: 50%;margin-right: -50%;transform: translate(-50%, -50%);">
-        <img src="res/check.svg" style="width: 300px;height: 100px;">
-        <h3 style="margin-left: 80px;">Successfully Posted</h3>
-        <h5 style="margin-left: 50px;" id="t1">Redirecting to Manage Events page in <span >5</span> secs</h5>
-    </div>
+    <div id="body"></div>    
 </body>
 </html>

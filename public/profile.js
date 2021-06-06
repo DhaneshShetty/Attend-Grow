@@ -3,9 +3,9 @@ $(document).ready(function(){
    var array=["W","e","l","c","o","m","e","!"];
    function animation(k)
    {
-      
+
        $("#title_anim").append("<span style='color:#023E8A;font-size: 50px;'>"+array[k]+"</span>")
-   
+
    }
    setInterval(function(){
        if(p<array.length)
@@ -99,7 +99,7 @@ success:function(data1,status,xhr)
     var str="<h6 style='margin-left: 30px;margin-bottom:30px;text-align: center;'>No completed Events</h6>"
     $("#completed").append(str);
    }
-   
+
 }
 });
 });

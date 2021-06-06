@@ -36,7 +36,7 @@ $(document).ready(function(){
             var c = ca[i].trim();
             if ((c.indexOf(name)) == 0) {
                 return true;
-            }    
+            }
         }
         return false;
     }
@@ -55,7 +55,7 @@ $(document).ready(function(){
             }
         });
     }
-   
+
     $("#register").click(function(){
         console.log('Clicked')
         $j.ajax('/events/register',{
@@ -63,7 +63,6 @@ $(document).ready(function(){
             data:{id:data.event_id},
             dataType:'json',
             success:function(data1,status,xhr){
-                alert('U have been registered');
                 $("#register").attr("disabled","disabled");
                 $("#register").text("Registered");
             },
@@ -78,4 +77,3 @@ $(document).ready(function(){
     });
 
 });
-

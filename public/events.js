@@ -32,7 +32,7 @@ function searchName(){
           for(var i=0;i<data1.length;i++){
             for(var j=0; j<nameWords.length; j++){
               var regexWord = new RegExp(nameWords[j].toLowerCase());
-              if(regexWord.test(data1[i].name.toLowerCase()) || regexWord.test(data1[i].tags.toLowerCase())){
+              if(regexWord.test(data1[i].name.toLowerCase()) || regexWord.test(data1[i].tags.toString().toLowerCase())){
                 displayItem(data1[i]);
                 break;
               }

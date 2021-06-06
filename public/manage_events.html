@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Attend&Grow-Manage events</title>    
+    <title>Attend&Grow-Manage events</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="common.css">
     <script src=https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js></script>
@@ -13,7 +13,7 @@
     <script>
         $('html, body').css({
                 overflow: 'hidden',
-                                                                        
+
                 });
         setInterval(a,1000);
         function a(){
@@ -48,35 +48,38 @@
             </li>
           </ul>
     </nav>
-     <div id="loading" >      
-            
-    </div> 
-    <div class="row" style="background-color: #00B4D8;margin: 20px;">
-        <div class="col-sm-10"  style="background-color: #00B4D8;">
-            <h3 style="color: white;">Get Free Listing of your event , use or registration portal <br> or redirect to your own portal, and no worries of publicity.Post your event now.</h3>
-        </div>
-        <div class="col-sm-2"  style="background-color: #00B4D8;">
+     <div id="loading" >
+
+    </div>
+
+
+    <div>
+        <h1 style="color: #00B4D8;margin-left: 20px;margin-top:15px;">YOUR EVENTS:</h1><br>
+        <h4 style="margin-left: 30px;">On Going</h4><br>
+        <div id="OnGoing"></div>
+        <h4 style="margin-left: 30px;">Upcoming</h4><br>
+        <div id="upcoming"></div><br>
+        <h4 style="margin-left: 30px;">Completed</h4><br>
+        <div id="completed"></div>
+    </div>
+    <br>
+
+
+
+        <div class=""  style="background-color: #00B4D8; text-align: center; margin: 0 5%; padding: 0.5%">
+            <h3 style="color: white; margin-top: 20px;">Post An Event</h3>
             <a href="postevents.html">
             <button style="margin: 19px; color: #00B4D8;background-color:white ;border-color: white;padding-right: 20px;padding-left: 20px;padding-top: 10px;padding-bottom: 10px;">POST</button>
             </a>
         </div>
-    </div>
-    <div>
-        <h3 style="color: #00B4D8;margin-left: 20px;">Your events:</h3><br>
-        <h4 style="margin-left: 30px;"><input type="button" class="btn btn-primary" value="On Going"></h4><br>
-        <div id="OnGoing"></div>
-        <h4 style="margin-left: 30px;"><input type="button" class="btn btn-primary" value="Upcoming"></h4><br>
-        <div id="upcoming"></div><br>
-        <h4 style="margin-left: 30px;"><input type="button" class="btn btn-primary" value="Completed"></h4><br>
-        <div id="completed"></div>
-    </div>
+
     <br>
-    <div class="row" style="text-align: center;background-color: #000C66;min-height: 300px;align-items: center;">
-        <div class="col-sm-6" style="color: white;"><b>About</b><p style="margin:10px">We found finding it difficult to read through mails, follow numerous clubs on social media.So here we come up with a website where we can see all events of VIT listed at one place with the ability to filter based on tech stack,date,time,club etc.Product designed by VITians for VITians.</p></div>           
+    <div class="row" style="text-align: center;background-color:#6C63FF;min-height: 300px;align-items: center;">
+        <div class="col-sm-6" style="color: white;"><b>About</b><p style="margin:10px">We found finding it difficult to read through mails, follow numerous clubs on social media.So here we come up with a website where we can see all events of VIT listed at one place with the ability to filter based on tech stack,date,time,club etc.Product designed by VITians for VITians.</p></div>
         <div class="col-sm-6" style="color: white;"><b>Contact Us</b><p>Email:attendandgrow@vit.ac.in</p><p>Ph no:123456789</p></div>
     </div>
     <div class="container-fluid" style="text-align: center;background-color: #050A30;padding:10px;">
         <span style="color:white">Developed by VITians for VITians</span>
-    </div>    
+    </div>
 </body>
 </html>

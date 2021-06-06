@@ -2,6 +2,7 @@ const User = require('../models/user.model');
 const Token = require('../models/refreshtoken.model');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
+const EVENT_OBJ = require("../models/event.model");
 
 
 const createUser = async(req,res)=>{
@@ -14,8 +15,8 @@ const createUser = async(req,res)=>{
         const hashedPassword = await bcrypt.hash(password,salt);
         const newUser = new User({email:email,name:name,password:hashedPassword,regNo:regNo,regEvents:[]});
         newUser.save()
-        .then(()=>res.status(201).json({Success:true}))
-        .catch(err=> res.status(400).json({Success:false,Message:err}));
+        .then(()=>res.redirect('/sucessSignup.html'))
+        .catch(err=> res.redirect('/wrongSignup.html'));
     }
     catch(error){
         console.log(error);
@@ -79,9 +80,10 @@ function authenticator(req,res,next){
         if(err) {
             Token.find({refreshtoken:refresh}).then(token=>{
                 if(token==null) return res.status(403).redirect('../login.html');
-                jwt.verify(refreshToken,process.env.REFRESH_TOKEN_SECRET,(err,user)=>{
+                jwt.verify(token,process.env.REFRESH_TOKEN_SECRET,(err,user)=>{
                     if(err) return res.status(403).redirect('../login.html');
                     const accessToken = jwt.sign({email:user.email},process.env.ACCESS_TOKEN_SECRET,{expiresIn:'60m'});
+                    req.user = user;
                     res.cookie('accessToken',accessToken,{
                         httpOnly: true,
                         sameSite: "strict" });
@@ -113,6 +115,9 @@ const registeredEventsList =(req,res) =>{
         if(user == null){
             return res.status(404).json({Success:false,Message:'Cannot find User'});
         }
+        var name=user[0].name
+        var email=user[0].email
+        var reg_no=user[0].regNo
         var arr=user[0].regEvents
         var data_arr=[]
         for(var i=0;i<arr.length;i++)
@@ -125,7 +130,7 @@ const registeredEventsList =(req,res) =>{
             })
             
         }
-        return res.status(200).json({Success:true,result:data_arr})
+        return res.status(200).json({Success:true,result:data_arr,name:name,email:email,reg:reg_no})
     }).catch(err=>{
         console.log(err);
         res.status(400).json({Success:false,Message:err});
@@ -134,7 +139,7 @@ const registeredEventsList =(req,res) =>{
 
 
 const postedEventsList =(req,res) =>{
-    User.find({email:"dhaneshshetty65@gmail.com"}).then(async user=>{
+    User.find({email:req.user.email}).then(async user=>{
         if(user == null){
             return res.status(404).json({Success:false,Message:'Cannot find User'});
         }
@@ -150,7 +155,7 @@ const postedEventsList =(req,res) =>{
             })
             
         }
-        return res.status(200).json({Success:true,result:data_arr})
+        return await res.status(200).json({Success:true,result:data_arr})
     }).catch(err=>{
         console.log(err);
         res.status(400).json({Success:false,Message:err});

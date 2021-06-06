@@ -1,32 +1,48 @@
 <html>
     <head>
         <title>Attend&Grow-Events</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
         <link rel="stylesheet" href="common.css">
         <link rel="stylesheet" href="events_styles.css">
         <script src=https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js></script>
         <script src="base64.js" charset="utf-8"></script>
         <script src="events.js"></script>
+        <script src="nav_login.js"></script>
+        <script>
+            setInterval(a,1000);
+            function a(){
+                if($("#eventslist").is(':empty'))
+            {
+
+            }
+            else{
+                $('#loading').css('display','none')
+            }
+            }
+        </script>
     </head>
     <body>
-        <nav class="navbar navbar-expand-sm" style="background-color: #073B4C;padding:10px">
-            <a class="navbar-brand" style="color:white;padding: 10px;" href="index.html">Attend&Grow</a>
+        <nav class="navbar navbar-expand-sm" style="background-color: #FFFFFF;padding:10px;border-bottom: 10px solid #6C63FF;box-shadow: 0px 0px 10px 0px 6C63FF;">
+            <a class="navbar-brand" style="color:#000C66;padding: 10px;" href="index.html">Attend&Grow</a>
             <ul class="navbar-nav" style="align-self: right;">
                 <li class="nav-item">
-                    <a href="events.html" style="color: white;padding: 10px;">Events</a>
+                    <a href="events.html" style="color: #000C66;padding: 10px;">Events</a>
                 </li>
                 <li class="nav-item">
-                    <a href="/registered" style="color: white;padding: 10px;">Registered Events</a>
+                    <a href="profile.html" style="color: #000C66;padding: 10px;" id="profile">Profile</a>
                 </li>
                 <li class="nav-item">
-                    <a href="manage_events.html" style="color: white;padding: 10px;">Manage Events</a>
+                    <a href="manage_events.html" style="color: #000C66;padding: 10px;" id="manage_events">Manage Events</a>
                 </li>
                 <li class="nav-item">
-                    <a href="/login" style="color: white;padding: 10px;">Login/SignUp</a>
+                    <a  style="color: #000C66;padding: 10px;" id="login_logout">Login/SignUp</a>
                 </li>
               </ul>
         </nav>
-        <h1 class="events-heading" style="color: #0077B6;margin-top:30px;margin-left: 30px;">Find your next event</h2>
+
+        <div id="loading" ></div> 
+        <h1 class="events-heading" style="color: #000C66;margin-top:30px;margin-left: 30px;">Find your next event</h2>
         <div class="search-div">
           <input type="text" class="events-search" id="name-input" name="name" style="margin-left:30px; margin-right:0; border-top-right-radius: 0px; border-bottom-right-radius: 0px;" placeholder="Search by keywords"><button type="button" id="search-button" class="events-search" style="border-top-left-radius: 0px; border-bottom-left-radius: 0px; background-color: white;" name="search">🔍</button>
           <span>From: </span> <input class="events-search" id="start-date-input" type="date" name="startDate">
@@ -34,25 +50,11 @@
         </div>
         <div id="eventslist"></div>
         <br>
-        <div class="row" style="text-align: center;background-color: #48CAE4;padding:10px;">
-            <div class="col-sm-4"><b>About</b><p>We found finding it difficult to read through mails, follow numerous clubs on social media.So here we come up with a website where we can see all events of VIT listed at one place with the ability to filter based on tech stack,date,time,club etc.Product designed by VITians for VITians.</p></div>
-            <div class="col-sm-4"><b>Discover</b><ul class="navbar-nav" style="align-self: right;">
-                <li class="nav-item">
-                    <a href="events.html" style="color: white;padding: 10px;">Events</a>
-                </li>
-                <li class="nav-item">
-                    <a href="/registered" style="color: white;padding: 10px;">Registered Events</a>
-                </li>
-                <li class="nav-item">
-                    <a href="manage_events.html" style="color: white;padding: 10px;">Manage Events</a>
-                </li>
-                <li class="nav-item">
-                    <a href="/login" style="color: white;padding: 10px;">Login/SignUp</a>
-                </li>
-              </ul></div>
-            <div class="col-sm-4"><b>Contact Us</b><p>Email:attendandgrow@vit.ac.in</p><p>Ph no:123456789</p></div>
+        <div class="row" style="text-align: center;background-color: #000C66;min-height: 300px;align-items: center;">
+            <div class="col-sm-6" style="color: white;"><b>About</b><p style="margin:10px">We found finding it difficult to read through mails, follow numerous clubs on social media.So here we come up with a website where we can see all events of VIT listed at one place with the ability to filter based on tech stack,date,time,club etc.Product designed by VITians for VITians.</p></div>           
+            <div class="col-sm-6" style="color: white;"><b>Contact Us</b><p>Email:attendandgrow@vit.ac.in</p><p>Ph no:123456789</p></div>
         </div>
-        <div class="container-fluid" style="text-align: center;background-color: #023E8A;padding:10px;">
+        <div class="container-fluid" style="text-align: center;background-color: #050A30;padding:10px;">
             <span style="color:white">Developed by VITians for VITians</span>
         </div>
     </body>

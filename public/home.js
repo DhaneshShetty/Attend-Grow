@@ -13,47 +13,7 @@ $(document).ready(function(){
         }
     },130);
     
-    function getCookie(cookieName) {
-        var name = cookieName + "=";
-        var ca = document.cookie.split(';');
-        for (var i = 0; i < ca.length; i++) {
-            var c = ca[i].trim();
-            if ((c.indexOf(name)) == 0) {
-                return true;
-            }    
-        }
-        return false;
-    }
-    if(getCookie('loggedIn')){
-        $('#login_logout').text("Log Out");
-    }
-    else{
-        $('#login_logout').text("Log In/SignUp");
-    }
-    $('#login_logout').click(function(){
-        if(getCookie('loggedIn')){
-            $.ajax('/users/logout',{
-                type:'GET',
-                dataType:'json',
-                success:function(data1,status,xhr){
-                    if(getCookie('loggedIn')){
-                        $('#login_logout').text("Log Out");
-                    }
-                    else{
-                        $('#login_logout').text("Log In/SignUp");
-                    }
-                },
-                error:function(xhr,status,error){
-                    console.log("Error:"+error);
-                    console.log("Status:"+status);
-                }
-            });
-            
-        }
-        else{
-            $('#login_logout').attr('href','/login.html');
-        }
-    });
+    
     $.ajax('/events/events?count=3',{
         type:'GET',
         dataType:'json',
@@ -63,7 +23,7 @@ $(document).ready(function(){
                 var d="<div class=col-sm-3 id=eventitem style='max-height:500px;min-height: max-content;'>"
                 var title="<h4 style=color:#6C63FF>"+obj[i].name+"</h4>"
                 var club="<p style=color:#000C66>"+obj[i].date+"</p>"
-                var desc="<p style='text-overflow:ellipsis;word-wrap: break-word;overflow-x:visible'>"+obj[i].description+"</p>"
+                var desc="<p style='text-overflow:ellipsis;word-wrap: break-word;overflow:hidden;max-height:50px'>"+obj[i].description+"</p>"
                 var button="<form action='event.html' method='get'>"
 													+	"<input type='hidden' name='event_id' value='" + data1[i]._id + "'>"
 													+ "<input type='submit' value='View More' class='eventButton'> </form></div>"

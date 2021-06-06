@@ -3,6 +3,13 @@
     position: relative;
     height:100px;
 }
+#loading{
+    width: 100%;
+    height: 100vh;
+    z-index: 10000;
+    background: rgb(255, 253, 253) url(loading.gif) no-repeat center;
+    position :fixed;
+}
 body{
     overflow-x:hidden;
 }
@@ -16,6 +23,7 @@ a:hover{
 #eventitem{
     border:1px solid #000C66;
     border-radius:10px;
+    background-color: #6b63ff0c;
     margin:10px;
     padding:10px;
     height: max-content;
@@ -26,16 +34,16 @@ a:hover{
 }
 .eventButton{
     background-color: white;
-    color: #6C63FF;
+    color: #000C66;
     border-radius: 2px;
-    border: 1px solid#6C63FF;
+    border: 1px solid#000C66;
 }
 .eventButton:hover{
     background-color: #6C63FF;
     color: white;
 }
 .eventtag{
-    background-color: #0077B6;
+    background-color: #6C63FF;
     color: white;
     border-radius:5px;
     margin:5px;
@@ -43,6 +51,12 @@ a:hover{
 }
 
 .eventItemImg{
-  width: 30%;
-  height: 30%;
+  width: 100%;
+}
+
+.eventTitle{
+    padding-top:20px;
+    font-size: 30px;
+    font-weight:bolder;
+    color:#6C63FF
 }

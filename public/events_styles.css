@@ -19,6 +19,6 @@
   font-size: 17px;
 }
 
-input:focus, textarea:focus, select:focus{
+input:focus, textarea:focus, select:focus, button:focus{
         outline: none;
 }

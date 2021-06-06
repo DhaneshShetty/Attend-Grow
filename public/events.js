@@ -111,14 +111,14 @@ $(document).ready(function(){
   });
 
     $("#search-button").click(function(){
-      if(!($("#name-input").val()==="")){
         if($("#search-button").html()=="🔍"){
-          $("#eventslist").empty();
-          $("#search-button").html("❌");
-          searchName();
+          if(!($("#name-input").val()==="")){
+            $("#eventslist").empty();
+            $("#search-button").html("❌");
+            searchName();
+          }
         }
-      }
-      if($("#search-button").html()=="❌"){
+      else if($("#search-button").html()=="❌"){
         $("#eventslist").empty();
         $("#search-button").html("🔍");
         displayAll();

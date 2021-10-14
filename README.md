@@ -17,7 +17,7 @@ the list of participants for an event.
 <img src = "https://github.com/tanish-malekar/Attend-Grow/blob/master/Screenshots/events.jpg?raw=true" width = 1000px>
 <img src = "https://github.com/tanish-malekar/Attend-Grow/blob/master/Screenshots/login.jpg?raw=true" width = 1000px>
 <img src = "https://github.com/tanish-malekar/Attend-Grow/blob/master/Screenshots/signup.jpg?raw=true" width = 1000px>
-<img src = "https://github.com/tanish-malekar/Attend-Grow/blob/master/Screenshots/evnets.jpg?raw=true" width = 1000px>
+<img src = "https://github.com/tanish-malekar/Attend-Grow/blob/master/Screenshots/postevent.jpg?raw=true" width = 1000px>
 <img src = "https://github.com/tanish-malekar/Attend-Grow/blob/master/Screenshots/profile.jpg?raw=true" width = 1000px>
 <img src = "https://github.com/tanish-malekar/Attend-Grow/blob/master/Screenshots/manageevents.jpg?raw=true" width = 1000px>
 
